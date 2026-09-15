@@ -1,64 +1,357 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+
+<head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NobreTech - Tecnologia e Hardware</title>
+
+    <title>NobreTech - Tecnologia sem limites</title>
 
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      
-    <h1>NobreTech</h1>
-    <nav>
-      <a href="#">Início</a>
-      <a href="#">Produtos</a>
-      <a href="#">Categorias</a>
-      <a href="#">Contato</a>
-    </nav>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+
+    <header class="topo">
+
+        <div class="logo">
+            <span>N</span>
+            <div>
+                <strong>Nobre<span>Tech</span></strong>
+                <small>TECNOLOGIA SEM LIMITES</small>
+            </div>
+        </div>
+
+        <div class="pesquisa">
+            <input type="text" placeholder="O que você está procurando?">
+            <button>🔍</button>
+        </div>
+
+        <div class="acoes">
+
+            <div>
+                <span>♙</span>
+                <small>Minha conta</small>
+            </div>
+
+            <div>
+                <span>♡</span>
+                <small>Favoritos</small>
+            </div>
+
+            <div>
+                <span>🛒</span>
+                <small>Carrinho</small>
+            </div>
+
+        </div>
+
     </header>
 
-    <main>
 
-      <section class="banner">
-        <h2>TECNOLOGIA PARTA VOCÊ</h2>
-        <p>Encontre os melhores produtos para seu computador</p>
-      <button> Ver produtos</button>
+    <!-- MENU -->
 
-      </section>
+    <nav class="menu">
 
-      <section class="produtos"
-        <h2>Produtos em destaque</h2>
+        <button class="categorias">
+            ☰ &nbsp; Todas as categorias
+        </button>
+
+        <a href="#" class="ativo">Início</a>
+        <a href="#">Produtos</a>
+        <a href="#">Categorias</a>
+        <a href="#">Ofertas</a>
+        <a href="#">Contato</a>
+
+    </nav>
+
+
+    <!-- BANNER -->
+
+    <section class="banner">
+
+        <div class="banner-texto">
+
+            <span>HARDWARE DE VERDADE</span>
+
+            <h1>
+                MONTE SEU PC<br>
+                <strong>DO SEU JEITO</strong>
+            </h1>
+
+            <p>
+                As melhores peças, as melhores marcas
+                e o melhor desempenho para você.
+            </p>
+
+            <button class="botao-banner">
+                VER PRODUTOS →
+            </button>
+
+        </div>
+
+        <div class="banner-imagem">
+
+            <div class="pc-falso">
+                🖥️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIAS -->
+
+    <section class="categorias-produtos">
+
+        <div class="categoria destaque">
+            <span>🖥️</span>
+            <p>PCs e<br>Notebooks</p>
+        </div>
+
+        <div class="categoria">
+            <span>🎮</span>
+            <p>Placas de<br>Vídeo</p>
+        </div>
+
+        <div class="categoria">
+            <span>⚙️</span>
+            <p>Processadores</p>
+        </div>
+
+        <div class="categoria">
+            <span>🧠</span>
+            <p>Memórias RAM</p>
+        </div>
+
+        <div class="categoria">
+            <span>💾</span>
+            <p>Armazenamento</p>
+        </div>
+
+        <div class="categoria">
+            <span>🔧</span>
+            <p>Placas Mãe</p>
+        </div>
+
+        <div class="categoria">
+            <span>🔌</span>
+            <p>Fontes</p>
+        </div>
+
+        <div class="categoria">
+            <span>🖥️</span>
+            <p>Gabinetes</p>
+        </div>
+
+    </section>
+
+
+    <!-- PRODUTOS -->
+
+    <section class="produtos">
+
+        <div class="titulo-produtos">
+
+            <h2>
+                <span>／</span>
+                PRODUTOS EM <strong>DESTAQUE</strong>
+            </h2>
+
+            <a href="#">Ver todos os produtos →</a>
+
+        </div>
+
+
         <div class="lista-produtos">
 
-          <div class="produto">
-            <h3>Placa de vídeo</h3>
-            <p>RTX 3060 12GB</p>
-            <strong>R$ 2,499,99</strong>
-            <button>Comprar</button>
-          </div>
+
+            <!-- PRODUTO 1 -->
+
+            <article class="produto">
+
+                <span class="oferta">OFERTA</span>
+
+                <button class="favorito">♡</button>
+
+                <div class="imagem-produto">
+                    🖥️
+                </div>
+
+                <h3>
+                    Placa de Vídeo RTX 3060
+                    12GB GDDR6
+                </h3>
+
+                <p class="preco-antigo">
+                    R$ 2.299,90
+                </p>
+
+                <strong class="preco">
+                    R$ 1.999,90
+                </strong>
+
+                <button class="comprar">
+                    🛒 &nbsp; Adicionar ao carrinho
+                </button>
+
+            </article>
 
 
-          <div class="produto">
-            <h3>Processador</h3>
-            <p>Ryzen 5 5600</p>
-            <strong>R$ 849,90</strong>
-            <button>Comprar</button>
+            <!-- PRODUTO 2 -->
 
-            <div class="produto">
-              <h3>Memória RAM</h3>
-              <P> 16GB DDR4</p>
-              <strong>R$ 929,99</strong>
-              <button>Comprar</button>
+            <article class="produto">
+
+                <button class="favorito">♡</button>
+
+                <div class="imagem-produto">
+                    ⚙️
+                </div>
+
+                <h3>
+                    Processador AMD Ryzen 5 5600
+                </h3>
+
+                <p class="preco-antigo">
+                    R$ 899,90
+                </p>
+
+                <strong class="preco">
+                    R$ 799,90
+                </strong>
+
+                <button class="comprar">
+                    🛒 &nbsp; Adicionar ao carrinho
+                </button>
+
+            </article>
+
+
+            <!-- PRODUTO 3 -->
+
+            <article class="produto">
+
+                <button class="favorito">♡</button>
+
+                <div class="imagem-produto">
+                    🧠
+                </div>
+
+                <h3>
+                    Memória Corsair Vengeance
+                    16GB DDR4
+                </h3>
+
+                <p class="preco-antigo">
+                    R$ 349,90
+                </p>
+
+                <strong class="preco">
+                    R$ 299,90
+                </strong>
+
+                <button class="comprar">
+                    🛒 &nbsp; Adicionar ao carrinho
+                </button>
+
+            </article>
+
+
+            <!-- PRODUTO 4 -->
+
+            <article class="produto">
+
+                <button class="favorito">♡</button>
+
+                <div class="imagem-produto">
+                    💾
+                </div>
+
+                <h3>
+                    SSD Kingston NV2 1TB
+                    NVMe M.2
+                </h3>
+
+                <p class="preco-antigo">
+                    R$ 499,90
+                </p>
+
+                <strong class="preco">
+                    R$ 449,90
+                </strong>
+
+                <button class="comprar">
+                    🛒 &nbsp; Adicionar ao carrinho
+                </button>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- BENEFÍCIOS -->
+
+    <section class="beneficios">
+
+        <div>
+            <span>☆</span>
+            <div>
+                <strong>AS MELHORES MARCAS</strong>
+                <p>As principais marcas do mercado</p>
             </div>
-          </div>
-      </section>
-    </main>
+        </div>
+
+        <div>
+            <span>♢</span>
+            <div>
+                <strong>GARANTIA DE QUALIDADE</strong>
+                <p>Produtos originais e confiáveis</p>
+            </div>
+        </div>
+
+        <div>
+            <span>🚚</span>
+            <div>
+                <strong>ENTREGA PARA TODO O BRASIL</strong>
+                <p>Rastreamento em tempo real</p>
+            </div>
+        </div>
+
+        <div>
+            <span>✓</span>
+            <div>
+                <strong>ATENDIMENTO ESPECIALIZADO</strong>
+                <p>Tire suas dúvidas com quem entende</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- RODAPÉ -->
+
     <footer>
-      <p>© 2026 NobreTech - Projeto desenvolvido para portfólio</p>
+
+        <h2>Nobre<span>Tech</span></h2>
+
+        <p>
+            Tecnologia sem limites.
+            Projeto desenvolvido para portfólio.
+        </p>
+
+        <p>© 2026 NobreTech</p>
+
     </footer>
-  </body>
+
+
+</body>
+
 </html>
 
             
