@@ -1,18 +1,750 @@
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
 * {
-  margin: o;
-  padding 0:
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 body {
-  front-family: Arial, sans-serif;
-  background-color: #06111f;
-  color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: #050f1b;
+
+    color: #ffffff;
 }
-header {
-  background-color: #071827
-  color: #ffffff;
-  padding: 20px 50px;
 
 
+/* =========================
+   TOPO
+========================= */
 
+.topo {
+    height: 80px;
+
+    background-color: #061321;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    border-bottom: 1px solid #16344f;
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.logo > span {
+    font-size: 42px;
+
+    font-weight: bold;
+
+    color: #ff7200;
+}
+
+.logo strong {
+    font-size: 25px;
+}
+
+.logo strong span {
+    color: #ff7200;
+}
+
+.logo small {
+    display: block;
+
+    color: #aab8c5;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* PESQUISA */
+
+.pesquisa {
+    display: flex;
+
+    width: 40%;
+
+    height: 40px;
+}
+
+.pesquisa input {
+    width: 100%;
+
+    background-color: #10253a;
+
+    border: 1px solid #1b405f;
+
+    border-radius: 8px 0 0 8px;
+
+    padding: 0 15px;
+
+    color: white;
+
+    outline: none;
+}
+
+.pesquisa input::placeholder {
+    color: #aab8c5;
+}
+
+.pesquisa button {
+    width: 50px;
+
+    border: none;
+
+    background-color: #f56f00;
+
+    color: white;
+
+    border-radius: 0 8px 8px 0;
+
+    cursor: pointer;
+}
+
+
+/* AÇÕES */
+
+.acoes {
+    display: flex;
+
+    gap: 25px;
+}
+
+.acoes div {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.acoes span {
+    font-size: 23px;
+}
+
+.acoes small {
+    color: #d5dce3;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.menu {
+    height: 58px;
+
+    background-color: #07192a;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 40px;
+}
+
+.menu a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.menu a:hover,
+.menu .ativo {
+    color: #ff7200;
+}
+
+.categorias {
+    background-color: #f56f00;
+
+    color: white;
+
+    border: none;
+
+    padding: 15px 30px;
+
+    font-weight: bold;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   BANNER
+========================= */
+
+.banner {
+    min-height: 350px;
+
+    background: linear-gradient(
+        90deg,
+        #071a2c,
+        #061321
+    );
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 50px 10%;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.banner::after {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    background-color: #0066ff;
+
+    opacity: 0.08;
+
+    border-radius: 50%;
+
+    right: 5%;
+
+    top: -100px;
+}
+
+.banner-texto {
+    max-width: 550px;
+
+    z-index: 1;
+}
+
+.banner-texto > span {
+    color: #ff7200;
+
+    font-weight: bold;
+
+    font-size: 16px;
+}
+
+.banner h1 {
+    font-size: 45px;
+
+    line-height: 1.05;
+
+    margin: 15px 0;
+}
+
+.banner h1 strong {
+    color: #ff7200;
+}
+
+.banner p {
+    color: #c5d0db;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+.botao-banner {
+    background-color: #ff7200;
+
+    border: none;
+
+    padding: 14px 25px;
+
+    color: white;
+
+    font-weight: bold;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.botao-banner:hover {
+    background-color: #ff8c26;
+
+    transform: translateY(-2px);
+}
+
+
+/* IMAGEM TEMPORÁRIA */
+
+.banner-imagem {
+    margin-left: auto;
+
+    width: 40%;
+
+    display: flex;
+
+    justify-content: center;
+
+    z-index: 1;
+}
+
+.pc-falso {
+    font-size: 150px;
+
+    filter: drop-shadow(0 0 30px #006eff);
+}
+
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+.categorias-produtos {
+    background-color: #061321;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 20px 5%;
+
+    overflow-x: auto;
+}
+
+.categoria {
+    min-width: 130px;
+
+    height: 100px;
+
+    border: 1px solid #143754;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+.categoria span {
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+.categoria p {
+    font-size: 12px;
+
+    text-align: center;
+}
+
+.categoria:hover {
+    border-color: #ff7200;
+
+    transform: translateY(-3px);
+}
+
+.categoria.destaque {
+    border-color: #ff7200;
+
+    box-shadow: 0 0 15px rgba(255, 114, 0, 0.15);
+}
+
+
+/* =========================
+   PRODUTOS
+========================= */
+
+.produtos {
+    max-width: 1400px;
+
+    margin: auto;
+
+    padding: 60px 5%;
+}
+
+.titulo-produtos {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.titulo-produtos h2 {
+    font-size: 28px;
+}
+
+.titulo-produtos h2 span {
+    color: #ff7200;
+}
+
+.titulo-produtos h2 strong {
+    color: #ff7200;
+}
+
+.titulo-produtos a {
+    color: #45a5ff;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.lista-produtos {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.produto {
+    background-color: #081b2d;
+
+    border: 1px solid #153752;
+
+    border-radius: 9px;
+
+    padding: 15px;
+
+    position: relative;
+
+    transition: 0.3s;
+}
+
+.produto:hover {
+    transform: translateY(-5px);
+
+    border-color: #ff7200;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+
+/* OFERTA */
+
+.oferta {
+    position: absolute;
+
+    top: 12px;
+
+    left: 12px;
+
+    background-color: #ff7200;
+
+    padding: 5px 10px;
+
+    border-radius: 15px;
+
+    font-size: 9px;
+
+    font-weight: bold;
+}
+
+
+/* FAVORITO */
+
+.favorito {
+    position: absolute;
+
+    top: 10px;
+
+    right: 10px;
+
+    background: transparent;
+
+    border: none;
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* IMAGEM */
+
+.imagem-produto {
+    height: 190px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 90px;
+
+    background-color: #061321;
+
+    border-radius: 7px;
+
+    margin-bottom: 15px;
+}
+
+
+/* INFORMAÇÕES */
+
+.produto h3 {
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    min-height: 60px;
+}
+
+.preco-antigo {
+    color: #778797;
+
+    text-decoration: line-through;
+
+    font-size: 12px;
+
+    margin-top: 8px;
+}
+
+.preco {
+    display: block;
+
+    color: #ff7200;
+
+    font-size: 22px;
+
+    margin: 5px 0 15px;
+}
+
+
+/* BOTÃO COMPRAR */
+
+.comprar {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    background-color: #ff7200;
+
+    color: white;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.comprar:hover {
+    background-color: #ff8c26;
+}
+
+
+/* =========================
+   BENEFÍCIOS
+========================= */
+
+.beneficios {
+    background-color: #071827;
+
+    border-top: 1px solid #16344f;
+
+    border-bottom: 1px solid #16344f;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    padding: 30px 7%;
+
+    gap: 30px;
+}
+
+.beneficios > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.beneficios span {
+    font-size: 35px;
+
+    color: #ff7200;
+}
+
+.beneficios strong {
+    font-size: 12px;
+}
+
+.beneficios p {
+    color: #94a5b5;
+
+    font-size: 11px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    background-color: #030a12;
+
+    text-align: center;
+
+    padding: 40px;
+
+    color: #a9b5c0;
+}
+
+footer h2 {
+    color: white;
+
+    margin-bottom: 10px;
+}
+
+footer h2 span {
+    color: #ff7200;
+}
+
+footer p {
+    margin: 8px;
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 900px) {
+
+    .topo {
+        height: auto;
+
+        padding: 20px;
+
+        flex-wrap: wrap;
+
+        gap: 20px;
+    }
+
+    .pesquisa {
+        order: 3;
+
+        width: 100%;
+    }
+
+    .menu {
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+        padding: 10px 20px;
+    }
+
+    .banner {
+        padding: 50px 25px;
+    }
+
+    .banner-imagem {
+        display: none;
+    }
+
+    .lista-produtos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .beneficios {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .logo {
+        width: 100%;
+    }
+
+    .acoes {
+        width: 100%;
+
+        justify-content: space-around;
+    }
+
+    .banner h1 {
+        font-size: 34px;
+    }
+
+    .lista-produtos {
+        grid-template-columns: 1fr;
+    }
+
+    .beneficios {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-produtos {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+}
   
