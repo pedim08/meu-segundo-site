@@ -3,817 +3,374 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NobreTech — loja demonstrativa de hardware para PC. Projeto de portfólio desenvolvido em HTML e CSS.">
-    <title>NobreTech | Hardware de Verdade</title>
+    <title>NobreTech - Tecnologia sem Limites</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- ==========================================================
-     CHECKBOXES: permitem interações demonstrativas sem JavaScript
-     ========================================================== -->
-<input class="ui-toggle" type="checkbox" id="cart-toggle">
-<input class="ui-toggle" type="checkbox" id="login-toggle">
-<input class="ui-toggle" type="checkbox" id="favorites-toggle">
-<input class="ui-toggle" type="checkbox" id="quickview-1">
-<input class="ui-toggle" type="checkbox" id="quickview-2">
-<input class="ui-toggle" type="checkbox" id="quickview-3">
-<input class="ui-toggle" type="checkbox" id="quickview-4">
-<input class="ui-toggle" type="checkbox" id="quickview-5">
-<input class="ui-toggle" type="checkbox" id="quickview-6">
-<input class="ui-toggle" type="checkbox" id="checkout-toggle">
+    <!-- CONTROLADORES DE MODAIS E GAVETAS (CHECKBOXES INVISÍVEIS) -->
+    <input type="checkbox" id="cart-toggle" class="ui-toggle">
+    <input type="checkbox" id="login-toggle" class="ui-toggle">
+    <input type="checkbox" id="favorites-toggle" class="ui-toggle">
+    <input type="checkbox" id="checkout-toggle" class="ui-toggle">
 
-<!-- ==========================================================
-     CABEÇALHO
-     ========================================================== -->
-<header class="site-header">
-
-    <div class="header-top container">
-
-        <a class="brand" href="#inicio">
-            <span class="brand-mark">N</span>
-            <span class="brand-text">
-                <strong>Nobre<span>Tech</span></strong>
-                <small>TECNOLOGIA SEM LIMITES</small>
-            </span>
-        </a>
-
-        <form class="search-box" action="#produtos">
-            <input type="search" placeholder="O que você está procurando?" aria-label="Pesquisar produtos">
-            <button type="submit" aria-label="Pesquisar">
-                <svg viewBox="0 0 24 24">
-                    <circle cx="11" cy="11" r="6.5"></circle>
-                    <path d="M16 16l5 5"></path>
-                </svg>
-            </button>
-        </form>
-
-        <div class="header-actions">
-
-            <label class="header-action" for="login-toggle">
-                <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="8" r="3.5"></circle>
-                    <path d="M4.5 21c.7-4.1 3.2-6 7.5-6s6.8 1.9 7.5 6"></path>
-                </svg>
-                <span>
-                    <b>Minha conta</b>
-                    <small>Entrar / Cadastrar</small>
-                </span>
-            </label>
-
-            <label class="header-action icon-only" for="favorites-toggle">
-                <span class="header-icon-wrap">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20.8 8.7c0 5.2-8.8 10.3-8.8 10.3S3.2 13.9 3.2 8.7A4.7 4.7 0 0 1 12 6.2a4.7 4.7 0 0 1 8.8 2.5Z"></path>
-                    </svg>
-                    <i>0</i>
-                </span>
-                <span>
-                    <b>Favoritos</b>
-                    <small>Seus produtos</small>
-                </span>
-            </label>
-
-            <label class="header-action icon-only" for="cart-toggle">
-                <span class="header-icon-wrap">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 4h2l2 11h10l3-8H6"></path>
-                        <circle cx="9" cy="19" r="1.5"></circle>
-                        <circle cx="17" cy="19" r="1.5"></circle>
-                    </svg>
-                    <i>2</i>
-                </span>
-                <span>
-                    <b>Carrinho</b>
-                    <small>R$ 2.349,80</small>
-                </span>
-            </label>
-
-        </div>
-    </div>
-
-    <nav class="main-nav">
-        <div class="container nav-inner">
-
-            <a class="category-button" href="#categorias">
-                <span class="hamburger"><i></i><i></i><i></i></span>
-                Todas as categorias
-                <span class="chevron">⌄</span>
+    <!-- CABEÇALHO -->
+    <header class="site-header">
+        <div class="container header-top">
+            <a href="#" class="brand">
+                <div class="brand-mark">N</div>
+                <div class="brand-text">
+                    <strong>Nobre<span>Tech</span></strong>
+                    <small>TECNOLOGIA SEM LIMITES</small>
+                </div>
             </a>
 
-            <div class="nav-links">
-                <a class="active" href="#inicio">Início</a>
-                <a href="#produtos">Produtos</a>
-                <a href="#categorias">Categorias</a>
-                <a href="#ofertas">Ofertas</a>
-                <a href="#contato">Contato</a>
+            <div class="search-box">
+                <input type="text" placeholder="O que você está procurando?">
+                <button type="button" aria-label="Buscar">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
             </div>
 
+            <div class="header-actions">
+                <label for="login-toggle" class="header-action">
+                    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <span>
+                        <b>Minha conta</b>
+                        <small>Entrar / Cadastrar</small>
+                    </span>
+                </label>
+
+                <label for="favorites-toggle" class="header-action">
+                    <div class="header-icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        <i>0</i>
+                    </div>
+                    <span>
+                        <small>Meus</small>
+                        <b>Favoritos</b>
+                    </span>
+                </label>
+
+                <label for="cart-toggle" class="header-action">
+                    <div class="header-icon-wrap">
+                        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        <i>0</i>
+                    </div>
+                    <span>
+                        <small>Seu</small>
+                        <b>Carrinho</b>
+                    </span>
+                </label>
+            </div>
         </div>
-    </nav>
-</header>
 
-<!-- ==========================================================
-     CONTEÚDO
-     ========================================================== -->
-<main>
+        <nav class="main-nav">
+            <div class="container nav-inner">
+                <div class="category-button">
+                    <div class="hamburger"><i></i><i></i><i></i></div>
+                    <span>Todas as categorias</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#" class="active">Início</a>
+                    <a href="#">Produtos</a>
+                    <a href="#">Categorias</a>
+                    <a href="#">Ofertas</a>
+                    <a href="#">Contato</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <!-- HERO -->
-    <section id="inicio" class="hero">
+    <!-- BANNER PRINCIPAL (HERO) -->
+    <section class="hero">
         <div class="hero-shape hero-shape-left"></div>
         <div class="hero-shape hero-shape-right"></div>
-
         <div class="container hero-content">
-
             <div class="hero-copy">
                 <p class="eyebrow">HARDWARE DE VERDADE</p>
-
-                <h1>
-                    MONTE SEU PC<br>
-                    <span>DO SEU JEITO</span>
-                </h1>
-
-                <p>
-                    As melhores peças, os melhores componentes e o desempenho
-                    que seu setup precisa para jogar, trabalhar e criar.
-                </p>
-
+                <h1>MONTE SEU PC <span>DO SEU JEITO</span></h1>
+                <p>As melhores peças, as melhores marcas e o melhor desempenho para você.</p>
                 <div class="hero-buttons">
-                    <a href="#produtos" class="btn btn-orange">
-                        VER PRODUTOS <b>›</b>
-                    </a>
-                    <a href="#categorias" class="btn btn-outline">
-                        EXPLORAR CATEGORIAS <b>›</b>
-                    </a>
+                    <a href="#produtos" class="btn btn-orange">VER PRODUTOS &rsaquo;</a>
                 </div>
             </div>
 
             <div class="hero-pc">
                 <div class="pc-glow"></div>
-                <div class="pc-monitor">
-                    <div class="monitor-screen">
-                        <div class="game-scene">
-                            <span class="mountain m1"></span>
-                            <span class="mountain m2"></span>
-                            <span class="mountain m3"></span>
-                            <span class="hero-silhouette"></span>
-                        </div>
-                    </div>
-                    <div class="monitor-stand"></div>
-                </div>
-
                 <div class="pc-case">
                     <div class="case-glass">
                         <div class="fan fan-1"></div>
                         <div class="fan fan-2"></div>
                         <div class="fan fan-3"></div>
                         <div class="gpu-label">GEFORCE RTX</div>
-                        <div class="ram ram-1"></div>
-                        <div class="ram ram-2"></div>
-                        <div class="motherboard"></div>
                     </div>
-                    <div class="case-frame"></div>
                 </div>
-
-                <div class="pc-keyboard"></div>
-                <div class="pc-mouse"></div>
             </div>
 
             <div class="hero-benefits">
                 <div class="benefit">
-                    <span>▣</span>
-                    <div><b>ENTREGA RÁPIDA</b><small>Para todo o Brasil</small></div>
+                    <span>⚡</span>
+                    <div>
+                        <b>ENTREGA RÁPIDA</b>
+                        <small>Para todo o Brasil</small>
+                    </div>
                 </div>
                 <div class="benefit">
-                    <span>◇</span>
-                    <div><b>COMPRA SEGURA</b><small>Seus dados protegidos</small></div>
+                    <span>🛡️</span>
+                    <div>
+                        <b>COMPRA SEGURA</b>
+                        <small>Seus dados protegidos</small>
+                    </div>
                 </div>
                 <div class="benefit">
-                    <span>✦</span>
-                    <div><b>PRODUTOS ORIGINAIS</b><small>Com garantia de fábrica</small></div>
+                    <span>🏆</span>
+                    <div>
+                        <b>PRODUTOS ORIGINAIS</b>
+                        <small>Com garantia de fábrica</small>
+                    </div>
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- CATEGORIAS -->
-    <section id="categorias" class="categories-section">
-        <div class="container category-grid">
-
-            <a class="category-card active" href="#produtos">
-                <span class="category-icon">▣</span>
-                <b>PCs e<br>Notebooks</b>
-            </a>
-
-            <a class="category-card" href="#produtos">
-                <span class="category-icon">▰</span>
-                <b>Placas de<br>Vídeo</b>
-            </a>
-
-            <a class="category-card" href="#produtos">
-                <span class="category-icon">▦</span>
+    <section class="categories-section container">
+        <div class="category-grid">
+            <div class="category-card active">
+                <div class="category-icon">💻</div>
+                <b>PCs e Notebooks</b>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🎮</div>
+                <b>Placas de Vídeo</b>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🔲</div>
                 <b>Processadores</b>
-            </a>
-
-            <a class="category-card" href="#produtos">
-                <span class="category-icon">▥</span>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">📼</div>
                 <b>Memórias RAM</b>
-            </a>
-
-            <a class="category-card" href="#produtos">
-                <span class="category-icon">▤</span>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💾</div>
                 <b>Armazenamento</b>
-            </a>
-
-            <a class="category-card" href="#produtos">
-                <span class="category-icon">▧</span>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🎛️</div>
                 <b>Placas Mãe</b>
-            </a>
-
-            <a class="category-card" href="#produtos">
-                <span class="category-icon">◉</span>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">⚡</div>
                 <b>Fontes</b>
-            </a>
-
-            <a class="category-card" href="#produtos">
-                <span class="category-icon">▥</span>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🖥️</div>
                 <b>Gabinetes</b>
-            </a>
-
-            <a class="category-card" href="#produtos">
-                <span class="category-icon">⌨</span>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">⌨️</div>
                 <b>Periféricos</b>
-            </a>
-
-            <a class="category-card" href="#produtos">
-                <span class="category-icon">▭</span>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">📺</div>
                 <b>Monitores</b>
-            </a>
-
-        </div>
-    </section>
-
-    <!-- PRODUTOS -->
-    <section id="produtos" class="products-section">
-        <div class="container">
-
-            <div class="section-heading">
-                <h2>PRODUTOS EM <span>DESTAQUE</span></h2>
-                <a href="#produtos">Ver todos os produtos <b>→</b></a>
-            </div>
-
-            <div class="product-grid">
-
-                <!-- PRODUTO 1 -->
-                <article class="product-card">
-                    <div class="product-image gpu">
-                        <span class="offer-tag">OFERTA</span>
-                        <label class="heart" for="favorites-toggle">♡</label>
-                        <div class="gpu-shape">
-                            <div class="gpu-fan f1"></div>
-                            <div class="gpu-fan f2"></div>
-                            <b>GALAX</b>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Placa de Vídeo Galax GeForce RTX 3060 12GB GDDR6</h3>
-                        <div class="stars">★★★★★ <small>(28)</small></div>
-                        <del>R$ 2.299,90</del>
-                        <strong class="price">R$ 1.999,90</strong>
-                        <small class="installment">12x de R$ 196,07 sem juros</small>
-                        <div class="product-actions">
-                            <label for="quickview-1" class="btn-product">Adicionar ao carrinho</label>
-                            <label for="quickview-1" class="view-product">Ver detalhes</label>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- PRODUTO 2 -->
-                <article class="product-card">
-                    <div class="product-image cpu">
-                        <label class="heart" for="favorites-toggle">♡</label>
-                        <div class="cpu-box">
-                            <div class="cpu-logo">AMD</div>
-                            <b>RYZEN</b>
-                            <strong>5</strong>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Processador AMD Ryzen 5 5600 3.5GHz (4.4GHz Turbo)</h3>
-                        <div class="stars">★★★★★ <small>(41)</small></div>
-                        <del>R$ 899,90</del>
-                        <strong class="price">R$ 799,90</strong>
-                        <small class="installment">12x de R$ 78,42 sem juros</small>
-                        <div class="product-actions">
-                            <label for="quickview-2" class="btn-product">Adicionar ao carrinho</label>
-                            <label for="quickview-2" class="view-product">Ver detalhes</label>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- PRODUTO 3 -->
-                <article class="product-card">
-                    <div class="product-image ram">
-                        <label class="heart" for="favorites-toggle">♡</label>
-                        <div class="ram-stick stick-1"><b>VENGEANCE</b></div>
-                        <div class="ram-stick stick-2"></div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Memória Corsair Vengeance LPX 16GB (2x8GB) DDR4 3200MHz</h3>
-                        <div class="stars">★★★★★ <small>(36)</small></div>
-                        <del>R$ 349,90</del>
-                        <strong class="price">R$ 299,90</strong>
-                        <small class="installment">12x de R$ 29,40 sem juros</small>
-                        <div class="product-actions">
-                            <label for="quickview-3" class="btn-product">Adicionar ao carrinho</label>
-                            <label for="quickview-3" class="view-product">Ver detalhes</label>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- PRODUTO 4 -->
-                <article class="product-card">
-                    <div class="product-image ssd">
-                        <label class="heart" for="favorites-toggle">♡</label>
-                        <div class="ssd-drive">
-                            <small>KINGSTON</small>
-                            <b>NV2</b>
-                            <strong>1TB</strong>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>SSD Kingston NV2 1TB NVMe M.2 2280</h3>
-                        <div class="stars">★★★★★ <small>(52)</small></div>
-                        <del>R$ 499,90</del>
-                        <strong class="price">R$ 449,90</strong>
-                        <small class="installment">12x de R$ 44,11 sem juros</small>
-                        <div class="product-actions">
-                            <label for="quickview-4" class="btn-product">Adicionar ao carrinho</label>
-                            <label for="quickview-4" class="view-product">Ver detalhes</label>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- PRODUTO 5 -->
-                <article class="product-card">
-                    <div class="product-image motherboard">
-                        <label class="heart" for="favorites-toggle">♡</label>
-                        <div class="motherboard-shape">
-                            <i></i><i></i><i></i><i></i><i></i>
-                            <b>ASUS</b>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Placa Mãe ASUS TUF Gaming B450M-Plus II</h3>
-                        <div class="stars">★★★★★ <small>(24)</small></div>
-                        <del>R$ 799,90</del>
-                        <strong class="price">R$ 699,90</strong>
-                        <small class="installment">12x de R$ 68,62 sem juros</small>
-                        <div class="product-actions">
-                            <label for="quickview-5" class="btn-product">Adicionar ao carrinho</label>
-                            <label for="quickview-5" class="view-product">Ver detalhes</label>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- PRODUTO 6 -->
-                <article class="product-card">
-                    <div class="product-image psu">
-                        <label class="heart" for="favorites-toggle">♡</label>
-                        <div class="psu-shape">
-                            <span>850W</span>
-                            <b>80 PLUS</b>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Fonte Gamer 850W 80 Plus Gold Modular</h3>
-                        <div class="stars">★★★★★ <small>(19)</small></div>
-                        <del>R$ 899,90</del>
-                        <strong class="price">R$ 749,90</strong>
-                        <small class="installment">12x de R$ 73,52 sem juros</small>
-                        <div class="product-actions">
-                            <label for="quickview-6" class="btn-product">Adicionar ao carrinho</label>
-                            <label for="quickview-6" class="view-product">Ver detalhes</label>
-                        </div>
-                    </div>
-                </article>
-
             </div>
         </div>
     </section>
 
-    <!-- OFERTAS -->
-    <section id="ofertas" class="offers-section">
-        <div class="container offer-banner">
+    <!-- PRODUTOS EM DESTAQUE -->
+    <section id="produtos" class="products-section container">
+        <div class="section-heading">
+            <h2>PRODUTOS EM <span>DESTAQUE</span></h2>
+            <a href="#">Ver todos os produtos &rarr;</a>
+        </div>
+
+        <div class="product-grid">
+            <!-- Produto 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="offer-tag">OFERTA</span>
+                    <span class="heart">&#9825;</span>
+                    <div class="gpu-shape">
+                        <div class="gpu-fan"></div>
+                        <div class="gpu-fan"></div>
+                        <b>GALAX RTX 3060</b>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Placa de Vídeo Galax GeForce RTX 3060 12GB GDDR6</h3>
+                    <div class="stars">★★★★★ <small>(48)</small></div>
+                    <del>R$ 2.299,90</del>
+                    <div class="price">R$ 1.999,90</div>
+                    <div class="installment">10x de R$ 199,99 sem juros</div>
+                    <div class="product-actions">
+                        <button class="btn-product">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produto 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="heart">&#9825;</span>
+                    <div class="cpu-box">
+                        <span class="cpu-logo">AMD</span>
+                        <b>RYZEN</b>
+                        <strong>5</strong>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Processador AMD Ryzen 5 5600 3.5GHz (4.4GHz Turbo)</h3>
+                    <div class="stars">★★★★★ <small>(92)</small></div>
+                    <del>R$ 999,90</del>
+                    <div class="price">R$ 799,90</div>
+                    <div class="installment">10x de R$ 79,99 sem juros</div>
+                    <div class="product-actions">
+                        <button class="btn-product">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produto 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="heart">&#9825;</span>
+                    <div>
+                        <div class="ram-stick">VENGEANCE LPX</div>
+                        <div class="ram-stick">VENGEANCE LPX</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Memória Corsair Vengeance LPX 16GB (2x8GB) DDR4 3200MHz</h3>
+                    <div class="stars">★★★★★ <small>(34)</small></div>
+                    <del>R$ 359,90</del>
+                    <div class="price">R$ 299,90</div>
+                    <div class="installment">6x de R$ 49,98 sem juros</div>
+                    <div class="product-actions">
+                        <button class="btn-product">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produto 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="heart">&#9825;</span>
+                    <div class="ssd-drive">
+                        <small style="color:#fff; font-size: 0.6rem;">Kingston</small>
+                        <b style="color:var(--primary); font-size: 0.75rem;">NV2 M.2</b>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>SSD Kingston NV2 1TB NVMe M.2 2280</h3>
+                    <div class="stars">★★★★★ <small>(61)</small></div>
+                    <del>R$ 529,90</del>
+                    <div class="price">R$ 449,90</div>
+                    <div class="installment">8x de R$ 56,23 sem juros</div>
+                    <div class="product-actions">
+                        <button class="btn-product">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produto 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="heart">&#9825;</span>
+                    <div class="motherboard-shape">
+                        <small style="color:#fff; font-size:0.55rem;">TUF GAMING</small>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Placa Mãe ASUS TUF Gaming B450M-Plus II</h3>
+                    <div class="stars">★★★★★ <small>(27)</small></div>
+                    <del>R$ 799,90</del>
+                    <div class="price">R$ 699,90</div>
+                    <div class="installment">10x de R$ 69,99 sem juros</div>
+                    <div class="product-actions">
+                        <button class="btn-product">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="container footer-main">
             <div>
-                <p>OFERTAS NOBRETECH</p>
-                <h2>UPGRADE NO SEU SETUP</h2>
-                <span>Descontos demonstrativos para o projeto de portfólio.</span>
+                <a href="#" class="brand">
+                    <div class="brand-mark">N</div>
+                    <div class="brand-text">
+                        <strong>Nobre<span>Tech</span></strong>
+                    </div>
+                </a>
+                <p>Sua loja especializada em hardware de alta performance e montagem de PCs gamer.</p>
             </div>
-            <a href="#produtos" class="btn btn-orange">CONFERIR OFERTAS <b>→</b></a>
-        </div>
-    </section>
-
-    <!-- PAGAMENTO -->
-    <section class="payment-section">
-        <div class="container">
-            <div class="payment-title">
-                <p>EXPERIÊNCIA DE E-COMMERCE</p>
-                <h2>FORMAS DE <span>PAGAMENTO</span></h2>
+            <div class="footer-column">
+                <h3>INSTITUCIONAL</h3>
+                <a href="#">Sobre Nós</a>
+                <a href="#">Políticas de Privacidade</a>
+                <a href="#">Termos e Condições</a>
             </div>
-
-            <div class="payment-grid">
-                <label class="payment-card">
-                    <input type="radio" name="payment" checked>
-                    <span class="payment-radio"></span>
-                    <div>
-                        <b>PIX</b>
-                        <small>Pagamento instantâneo</small>
-                    </div>
-                </label>
-
-                <label class="payment-card">
-                    <input type="radio" name="payment">
-                    <span class="payment-radio"></span>
-                    <div>
-                        <b>CARTÃO DE CRÉDITO</b>
-                        <small>Até 12x sem juros</small>
-                    </div>
-                </label>
-
-                <label class="payment-card">
-                    <input type="radio" name="payment">
-                    <span class="payment-radio"></span>
-                    <div>
-                        <b>BOLETO</b>
-                        <small>Pagamento à vista</small>
-                    </div>
-                </label>
+            <div class="footer-column">
+                <h3>AJUDA</h3>
+                <a href="#">Trocas e Devoluções</a>
+                <a href="#">Fretes e Entregas</a>
+                <a href="#">Fale Conosco</a>
+            </div>
+            <div class="footer-column">
+                <h3>CONTATO</h3>
+                <span>atendimento@nobretech.com.br</span>
+                <span>(11) 99999-9999</span>
             </div>
         </div>
-    </section>
-
-    <!-- BENEFÍCIOS -->
-    <section class="benefits-bar">
-        <div class="container benefits-grid">
-
-            <div class="bottom-benefit">
-                <span>☆</span>
-                <div><b>AS MELHORES MARCAS</b><small>As principais marcas do mercado</small></div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 NobreTech. Todos os direitos reservados.</p>
             </div>
+        </div>
+    </footer>
 
-            <div class="bottom-benefit">
-                <span>◈</span>
-                <div><b>GARANTIA DE QUALIDADE</b><small>Produtos originais e confiáveis</small></div>
+    <!-- GAVETA DO CARRINHO (INICIA VAZIA) -->
+    <label for="cart-toggle" class="cart-overlay"></label>
+    <div class="cart-drawer">
+        <div class="cart-head">
+            <h2>Seu Carrinho</h2>
+            <label for="cart-toggle" class="modal-close">&times;</label>
+        </div>
+
+        <!-- ÁREA DINÂMICA (PREENCHIDA E GERENCIADA PELO SCRIPT.JS) -->
+        <div class="cart-items">
+            <p class="cart-empty-msg">Seu carrinho está vazio.</p>
+        </div>
+
+        <div class="cart-summary">
+            <div>
+                <span>Subtotal</span>
+                <strong>R$ 0,00</strong>
             </div>
-
-            <div class="bottom-benefit">
-                <span>▣</span>
-                <div><b>ENTREGA PARA TODO O BRASIL</b><small>Rastreamento em tempo real</small></div>
+            <div>
+                <span>Frete</span>
+                <span class="free">Grátis</span>
             </div>
-
-            <div class="bottom-benefit">
-                <span>✓</span>
-                <div><b>ATENDIMENTO ESPECIALIZADO</b><small>Tire suas dúvidas com quem entende</small></div>
+            <div class="total">
+                <span>Total</span>
+                <strong>R$ 0,00</strong>
             </div>
-
-        </div>
-    </section>
-
-</main>
-
-<!-- ==========================================================
-     FOOTER
-     ========================================================== -->
-<footer id="contato" class="footer">
-    <div class="container footer-main">
-
-        <div>
-            <a class="brand" href="#inicio">
-                <span class="brand-mark">N</span>
-                <span class="brand-text">
-                    <strong>Nobre<span>Tech</span></strong>
-                    <small>TECNOLOGIA SEM LIMITES</small>
-                </span>
-            </a>
-            <p>
-                Projeto de e-commerce desenvolvido como portfólio em
-                HTML e CSS, inspirado visualmente em grandes lojas de hardware.
-            </p>
-        </div>
-
-        <div class="footer-column">
-            <h3>INSTITUCIONAL</h3>
-            <a href="#inicio">Sobre a NobreTech</a>
-            <a href="#categorias">Categorias</a>
-            <a href="#ofertas">Ofertas</a>
-            <a href="#contato">Contato</a>
-        </div>
-
-        <div class="footer-column">
-            <h3>ATENDIMENTO</h3>
-            <a href="#contato">Fale Conosco</a>
-            <a href="#contato">Entrega e Frete</a>
-            <a href="#contato">Trocas e Devoluções</a>
-            <a href="#contato">Garantia</a>
-        </div>
-
-        <div class="footer-column">
-            <h3>PORTFÓLIO</h3>
-            <a href="https://github.com/" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-            <span>Projeto HTML + CSS</span>
-            <span>NobreTech 2026</span>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        <div class="container">
-            <span>© 2026 NobreTech — Projeto de portfólio.</span>
-            <span>HTML • CSS • E-commerce UI</span>
-        </div>
-    </div>
-</footer>
-
-<!-- ==========================================================
-     MODAL DE LOGIN
-     ========================================================== -->
-<div class="overlay login-overlay">
-    <div class="modal login-modal">
-        <label class="modal-close" for="login-toggle">×</label>
-        <p class="modal-kicker">NOBRETECH</p>
-        <h2>Minha conta</h2>
-        <p>Entre para acompanhar seus pedidos e favoritos.</p>
-
-        <form>
-            <label>E-mail</label>
-            <input type="email" placeholder="seu@email.com">
-
-            <label>Senha</label>
-            <input type="password" placeholder="Sua senha">
-
-            <button type="submit" class="btn btn-orange">ENTRAR</button>
-        </form>
-
-        <a href="#contato" class="modal-link">Ainda não tenho cadastro</a>
-    </div>
-</div>
-
-<!-- ==========================================================
-     MODAL DE FAVORITOS
-     ========================================================== -->
-<div class="overlay favorites-overlay">
-    <div class="modal">
-        <label class="modal-close" for="favorites-toggle">×</label>
-        <p class="modal-kicker">NOBRETECH</p>
-        <h2>Favoritos</h2>
-        <p>Você ainda não adicionou produtos aos favoritos.</p>
-        <a href="#produtos" class="btn btn-orange">VER PRODUTOS</a>
-    </div>
-</div>
-
-<!-- ==========================================================
-     CARRINHO
-     ========================================================== -->
-<aside class="cart-drawer">
-    <div class="cart-head">
-        <div>
-            <p class="modal-kicker">SEU PEDIDO</p>
-            <h2>Carrinho</h2>
-        </div>
-        <label class="modal-close" for="cart-toggle">×</label>
-    </div>
-
-    <div class="cart-item">
-        <div class="cart-product gpu-mini"></div>
-        <div>
-            <b>RTX 3060 12GB</b>
-            <small>Quantidade: 1</small>
-            <strong>R$ 1.999,90</strong>
+            
+            <button type="button" class="btn btn-orange checkout-button">
+                Finalizar Compra
+            </button>
+            <label for="cart-toggle" class="continue-shopping">
+                Continuar Comprando
+            </label>
         </div>
     </div>
 
-    <div class="cart-item">
-        <div class="cart-product cpu-mini"></div>
-        <div>
-            <b>Ryzen 5 5600</b>
-            <small>Quantidade: 1</small>
-            <strong>R$ 799,90</strong>
-        </div>
-    </div>
-
-    <div class="cart-summary">
-        <div><span>Subtotal</span><b>R$ 2.799,80</b></div>
-        <div><span>Frete</span><b class="free">GRÁTIS</b></div>
-        <div class="total"><span>Total</span><b>R$ 2.799,80</b></div>
-    </div>
-
-    <label for="checkout-toggle" class="btn btn-orange checkout-button">IR PARA PAGAMENTO →</label>
-    <a href="#produtos" class="continue-shopping">Continuar comprando</a>
-</aside>
-
-<div class="cart-overlay">
-    <label for="cart-toggle"></label>
-</div>
-
-<!-- ==========================================================
-     CHECKOUT / PAGAMENTO
-     ========================================================== -->
-<div class="overlay checkout-overlay">
-    <div class="checkout-modal">
-        <label class="modal-close" for="checkout-toggle">×</label>
-
-        <div class="checkout-head">
-            <p class="modal-kicker">FINALIZAR COMPRA</p>
-            <h2>Pagamento</h2>
-            <span>Pedido demonstrativo da NobreTech</span>
-        </div>
-
-        <div class="checkout-layout">
-
-            <form class="checkout-form">
-
-                <h3>1. Seus dados</h3>
-
-                <div class="form-grid">
-                    <div>
-                        <label>Nome completo</label>
-                        <input type="text" placeholder="Seu nome">
-                    </div>
-
-                    <div>
-                        <label>CPF</label>
-                        <input type="text" placeholder="000.000.000-00">
-                    </div>
-
-                    <div>
-                        <label>E-mail</label>
-                        <input type="email" placeholder="seu@email.com">
-                    </div>
-
-                    <div>
-                        <label>Telefone</label>
-                        <input type="tel" placeholder="(00) 00000-0000">
-                    </div>
-                </div>
-
-                <h3>2. Endereço de entrega</h3>
-
-                <div class="form-grid">
-                    <div>
-                        <label>CEP</label>
-                        <input type="text" placeholder="00000-000">
-                    </div>
-
-                    <div>
-                        <label>Cidade</label>
-                        <input type="text" placeholder="Sua cidade">
-                    </div>
-
-                    <div class="wide">
-                        <label>Endereço</label>
-                        <input type="text" placeholder="Rua, número e complemento">
-                    </div>
-                </div>
-
-                <h3>3. Forma de pagamento</h3>
-
-                <div class="checkout-payments">
-                    <label>
-                        <input type="radio" name="checkout-payment" checked>
-                        <span>PIX</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="checkout-payment">
-                        <span>Cartão</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="checkout-payment">
-                        <span>Boleto</span>
-                    </label>
-                </div>
-
-                <button type="submit" class="btn btn-orange finish-button">
-                    FINALIZAR PEDIDO
-                </button>
-            </form>
-
-            <div class="checkout-summary">
-                <h3>Resumo do pedido</h3>
-                <div><span>RTX 3060 12GB</span><b>R$ 1.999,90</b></div>
-                <div><span>Ryzen 5 5600</span><b>R$ 799,90</b></div>
-                <hr>
-                <div><span>Frete</span><b class="free">GRÁTIS</b></div>
-                <div class="checkout-total"><span>Total</span><b>R$ 2.799,80</b></div>
-
-                <div class="secure">
-                    <span>✓</span>
-                    <p><b>Compra segura</b><small>Ambiente demonstrativo protegido.</small></p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- ==========================================================
-     QUICK VIEW DOS PRODUTOS
-     ========================================================== -->
-
-<div class="overlay quickview-overlay qv-1">
-    <div class="product-modal">
-        <label class="modal-close" for="quickview-1">×</label>
-        <div class="modal-product-image gpu"><div class="gpu-shape"><div class="gpu-fan f1"></div><div class="gpu-fan f2"></div></div></div>
-        <div class="modal-product-info">
-            <p class="modal-kicker">PLACA DE VÍDEO</p>
-            <h2>Galax GeForce RTX 3060 12GB GDDR6</h2>
-            <div class="stars">★★★★★</div>
-            <p>Placa de vídeo para jogos em Full HD e criação de conteúdo.</p>
-            <strong class="modal-price">R$ 1.999,90</strong>
-            <label for="cart-toggle" class="btn btn-orange">ADICIONAR AO CARRINHO</label>
-        </div>
-    </div>
-</div>
-
-<div class="overlay quickview-overlay qv-2">
-    <div class="product-modal">
-        <label class="modal-close" for="quickview-2">×</label>
-        <div class="modal-product-image cpu"><div class="cpu-box"><div class="cpu-logo">AMD</div><b>RYZEN</b><strong>5</strong></div></div>
-        <div class="modal-product-info">
-            <p class="modal-kicker">PROCESSADOR</p>
-            <h2>AMD Ryzen 5 5600 3.5GHz</h2>
-            <div class="stars">★★★★★</div>
-            <p>6 núcleos, 12 threads e boost de até 4.4GHz.</p>
-            <strong class="modal-price">R$ 799,90</strong>
-            <label for="cart-toggle" class="btn btn-orange">ADICIONAR AO CARRINHO</label>
-        </div>
-    </div>
-</div>
-
-<div class="overlay quickview-overlay qv-3">
-    <div class="product-modal">
-        <label class="modal-close" for="quickview-3">×</label>
-        <div class="modal-product-image ram"><div class="ram-stick stick-1"></div><div class="ram-stick stick-2"></div></div>
-        <div class="modal-product-info">
-            <p class="modal-kicker">MEMÓRIA RAM</p>
-            <h2>Corsair Vengeance LPX 16GB</h2>
-            <div class="stars">★★★★★</div>
-            <p>Kit 2x8GB DDR4 3200MHz para setups gamer.</p>
-            <strong class="modal-price">R$ 299,90</strong>
-            <label for="cart-toggle" class="btn btn-orange">ADICIONAR AO CARRINHO</label>
-        </div>
-    </div>
-</div>
-
-<div class="overlay quickview-overlay qv-4">
-    <div class="product-modal">
-        <label class="modal-close" for="quickview-4">×</label>
-        <div class="modal-product-image ssd"><div class="ssd-drive"><small>KINGSTON</small><b>NV2</b><strong>1TB</strong></div></div>
-        <div class="modal-product-info">
-            <p class="modal-kicker">ARMAZENAMENTO</p>
-            <h2>Kingston NV2 1TB NVMe M.2</h2>
-            <div class="stars">★★★★★</div>
-            <p>SSD NVMe M.2 2280 para carregamentos rápidos.</p>
-            <strong class="modal-price">R$ 449,90</strong>
-            <label for="cart-toggle" class="btn btn-orange">ADICIONAR AO CARRINHO</label>
-        </div>
-    </div>
-</div>
-
-<div class="overlay quickview-overlay qv-5">
-    <div class="product-modal">
-        <label class="modal-close" for="quickview-5">×</label>
-        <div class="modal-product-image motherboard"><div class="motherboard-shape"><b>ASUS</b></div></div>
-        <div class="modal-product-info">
-            <p class="modal-kicker">PLACA-MÃE</p>
-            <h2>ASUS TUF Gaming B450M-Plus II</h2>
-            <div class="stars">★★★★★</div>
-            <p>Placa-mãe AM4 para processadores Ryzen.</p>
-            <strong class="modal-price">R$ 699,90</strong>
-            <label for="cart-toggle" class="btn btn-orange">ADICIONAR AO CARRINHO</label>
-        </div>
-    </div>
-</div>
-
-<div class="overlay quickview-overlay qv-6">
-    <div class="product-modal">
-        <label class="modal-close" for="quickview-6">×</label>
-        <div class="modal-product-image psu"><div class="psu-shape"><span>850W</span><b>80 PLUS</b></div></div>
-        <div class="modal-product-info">
-            <p class="modal-kicker">FONTE</p>
-            <h2>Fonte Gamer 850W 80 Plus Gold</h2>
-            <div class="stars">★★★★★</div>
-            <p>Fonte modular de alta eficiência para PCs gamer.</p>
-            <strong class="modal-price">R$ 749,90</strong>
-            <label for="cart-toggle" class="btn btn-orange">ADICIONAR AO CARRINHO</label>
-        </div>
-    </div>
-</div>
-
-<!-- Script de Funcionalidades do Carrinho -->
+    <!-- CHAMADA DO SCRIPT DE ADICIONAR/REMOVER PRODUTOS -->
     <script src="script.js"></script>
 </body>
 </html>
