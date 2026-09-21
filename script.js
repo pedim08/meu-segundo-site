@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let cart = [];
 
     const cartItemsContainer = document.querySelector('.cart-items');
-    const cartCountBadge = document.querySelector('.header-action label[for="cart-toggle"] i') || document.querySelector('.header-icon-wrap i');
+    // Seleciona o elemento do contador de itens dentro do ícone do carrinho no cabeçalho
+    const cartCountBadge = document.querySelector('.header-action label[for="cart-toggle"] .header-icon-wrap i') || 
+                           document.querySelectorAll('.header-icon-wrap i')[1]; // Seleciona o 2º ícone (Carrinho)
     const cartTotalElement = document.querySelector('.cart-summary .total strong');
 
     // Inicializa eventos nos botões de "Adicionar ao carrinho"
@@ -50,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cartItemsContainer.innerHTML = '';
 
+        // Se o carrinho estiver vazio
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<p class="cart-empty-msg">Seu carrinho está vazio.</p>';
             if (cartCountBadge) cartCountBadge.innerText = '0';
@@ -85,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            // Evento para remover ao clicar no ícone da lixeira
+            // Evento para remover ao clicar na lixeira
             itemElement.querySelector('.btn-remove-item').addEventListener('click', () => {
                 removeFromCart(item.id);
             });
@@ -93,8 +96,12 @@ document.addEventListener('DOMContentLoaded', () => {
             cartItemsContainer.appendChild(itemElement);
         });
 
-        // Atualiza a quantidade no topo e o valor total
-        if (cartCountBadge) cartCountBadge.innerText = totalItemsCount;
+        // Atualiza a quantidade total de itens no contador vermelho no topo da página
+        if (cartCountBadge) {
+            cartCountBadge.innerText = totalItemsCount;
+        }
+
+        // Atualiza o valor total
         updateTotal(total);
     }
 
