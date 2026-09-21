@@ -1,13 +1,88 @@
 document.addEventListener('DOMContentLoaded', () => {
     let cart = [];
 
+    // Elementos do Carrinho
     const cartItemsContainer = document.querySelector('.cart-items');
-    // Seleciona o elemento do contador de itens dentro do ícone do carrinho no cabeçalho
     const cartCountBadge = document.querySelector('.header-action label[for="cart-toggle"] .header-icon-wrap i') || 
-                           document.querySelectorAll('.header-icon-wrap i')[1]; // Seleciona o 2º ícone (Carrinho)
+                           document.querySelectorAll('.header-icon-wrap i')[1];
     const cartTotalElement = document.querySelector('.cart-summary .total strong');
 
-    // Inicializa eventos nos botões de "Adicionar ao carrinho"
+    // Elementos da Busca e Produtos
+    const searchInput = document.querySelector('.search-box input');
+    const searchButton = document.querySelector('.search-box button');
+    const productCards = document.querySelectorAll('.product-card');
+    const productGrid = document.querySelector('.product-grid');
+
+    // Criar mensagem de "Nenhum produto encontrado" para a pesquisa
+    const noResultsMsg = document.createElement('p');
+    noResultsMsg.className = 'no-results-msg';
+    noResultsMsg.style.cssText = 'grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 40px 0; font-size: 1rem; display: none;';
+    noResultsMsg.innerText = 'Nenhum produto encontrado para a sua busca.';
+    if (productGrid) {
+        productGrid.appendChild(noResultsMsg);
+    }
+
+    /* ==========================================================
+       1. FUNCIONALIDADE DA BARRA DE PESQUISA (FILTRO DINÂMICO)
+       ========================================================== */
+    function filterProducts() {
+        if (!searchInput) return;
+
+        // Normaliza o texto buscado (remove acentos e transforma em minúsculas)
+        const searchTerm = searchInput.value
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .trim();
+
+        let visibleCount = 0;
+
+        productCards.forEach(card => {
+            const titleElement = card.querySelector('h3');
+            if (!titleElement) return;
+
+            // Normaliza o título do produto
+            const productTitle = titleElement.innerText
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '');
+
+            // Verifica se o título inclui o termo digitado
+            if (productTitle.includes(searchTerm)) {
+                card.style.display = 'flex';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Exibe mensagem caso nenhum produto corresponda à busca
+        if (visibleCount === 0) {
+            noResultsMsg.style.display = 'block';
+        } else {
+            noResultsMsg.style.display = 'none';
+        }
+    }
+
+    // Eventos da Pesquisa (digitação em tempo real + clique no botão)
+    if (searchInput) {
+        searchInput.addEventListener('input', filterProducts);
+    }
+    if (searchButton) {
+        searchButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            filterProducts();
+            // Rola a página suavemente até a seção de produtos
+            const productsSection = document.getElementById('produtos');
+            if (productsSection) {
+                productsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    /* ==========================================================
+       2. GERENCIAMENTO DO CARRINHO (ADICIONAR / REMOVER)
+       ========================================================== */
     const addButtons = document.querySelectorAll('.btn-product');
     
     addButtons.forEach(button => {
@@ -24,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             addToCart({ id, title, price });
 
-            // Abre a gaveta lateral do carrinho automaticamente
             const cartToggle = document.getElementById('cart-toggle');
             if (cartToggle) cartToggle.checked = true;
         });
@@ -52,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cartItemsContainer.innerHTML = '';
 
-        // Se o carrinho estiver vazio
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<p class="cart-empty-msg">Seu carrinho está vazio.</p>';
             if (cartCountBadge) cartCountBadge.innerText = '0';
@@ -88,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            // Evento para remover ao clicar na lixeira
             itemElement.querySelector('.btn-remove-item').addEventListener('click', () => {
                 removeFromCart(item.id);
             });
@@ -96,12 +168,10 @@ document.addEventListener('DOMContentLoaded', () => {
             cartItemsContainer.appendChild(itemElement);
         });
 
-        // Atualiza a quantidade total de itens no contador vermelho no topo da página
         if (cartCountBadge) {
             cartCountBadge.innerText = totalItemsCount;
         }
 
-        // Atualiza o valor total
         updateTotal(total);
     }
 
