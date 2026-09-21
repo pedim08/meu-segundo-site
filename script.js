@@ -1,50 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Array global para armazenar os produtos do carrinho
     let cart = [];
 
-    // Elementos do DOM
-    const cartItemsContainer = document.querySelector('.cart-items') || createCartItemsContainer();
-    const cartCountBadge = document.querySelector('.header-icon-wrap i');
-    const cartTotalElement = document.querySelector('.cart-summary .total strong') || document.querySelector('.cart-summary .total');
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const cartCountBadge = document.querySelector('.header-action label[for="cart-toggle"] i') || document.querySelector('.header-icon-wrap i');
+    const cartTotalElement = document.querySelector('.cart-summary .total strong');
 
-    // Inicializar evento nos botões "Adicionar ao carrinho"
-    initAddToCartButtons();
+    // Inicializa eventos nos botões de "Adicionar ao carrinho"
+    const addButtons = document.querySelectorAll('.btn-product');
+    
+    addButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const productCard = button.closest('.product-card');
+            
+            if (!productCard) return;
 
-    function createCartItemsContainer() {
-        const container = document.createElement('div');
-        container.className = 'cart-items';
-        const drawer = document.querySelector('.cart-drawer');
-        const head = document.querySelector('.cart-head');
-        if (drawer && head) {
-            head.after(container);
-        }
-        return container;
-    }
+            const title = productCard.querySelector('h3')?.innerText || 'Produto';
+            const priceText = productCard.querySelector('.price')?.innerText || '0';
+            const price = parseFloat(priceText.replace('R$', '').replace('.', '').replace(',', '.').trim());
+            const id = title.toLowerCase().replace(/\s+/g, '-');
 
-    function initAddToCartButtons() {
-        const addButtons = document.querySelectorAll('.btn-product');
-        
-        addButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const productCard = button.closest('.product-card');
-                
-                if (!productCard) return;
+            addToCart({ id, title, price });
 
-                // Captura os dados do produto a partir do Card HTML
-                const title = productCard.querySelector('h3')?.innerText || 'Produto';
-                const priceText = productCard.querySelector('.price')?.innerText || '0';
-                const price = parseFloat(priceText.replace('R$', '').replace('.', '').replace(',', '.').trim());
-                const id = title.toLowerCase().replace(/\s+/g, '-');
-
-                addToCart({ id, title, price });
-
-                // Abre a gaveta do carrinho automaticamente
-                const cartToggle = document.getElementById('cart-toggle');
-                if (cartToggle) cartToggle.checked = true;
-            });
+            // Abre a gaveta lateral do carrinho automaticamente
+            const cartToggle = document.getElementById('cart-toggle');
+            if (cartToggle) cartToggle.checked = true;
         });
-    }
+    });
 
     function addToCart(product) {
         const existingItem = cart.find(item => item.id === product.id);
@@ -61,18 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function removeFromCart(productId) {
         cart = cart.filter(item => item.id !== productId);
         renderCart();
-    }
-
-    function updateQuantity(productId, delta) {
-        const item = cart.find(item => item.id === productId);
-        if (item) {
-            item.quantity += delta;
-            if (item.quantity <= 0) {
-                removeFromCart(productId);
-            } else {
-                renderCart();
-            }
-        }
     }
 
     function renderCart() {
@@ -115,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            // Adiciona evento de clique no ícone da lixeira
+            // Evento para remover ao clicar no ícone da lixeira
             itemElement.querySelector('.btn-remove-item').addEventListener('click', () => {
                 removeFromCart(item.id);
             });
@@ -123,10 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cartItemsContainer.appendChild(itemElement);
         });
 
-        // Atualiza contador do topo
+        // Atualiza a quantidade no topo e o valor total
         if (cartCountBadge) cartCountBadge.innerText = totalItemsCount;
-
-        // Atualiza valor total
         updateTotal(total);
     }
 
