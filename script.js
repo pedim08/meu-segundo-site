@@ -181,3 +181,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+/* ==========================================================
+   SISTEMA DE CADASTRO DE CONTA
+   ========================================================== */
+const registerForm = document.getElementById('register-form');
+const authMessage = document.getElementById('auth-message');
+
+if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Impede o recarregamento da página
+
+        const name = document.getElementById('reg-name').value;
+        const email = document.getElementById('reg-email').value;
+        const password = document.getElementById('reg-password').value;
+
+        // Salva os dados no navegador
+        const userData = { name, email, password };
+        localStorage.setItem('currentUser', JSON.stringify(userData));
+
+        // Exibe mensagem de sucesso
+        if (authMessage) {
+            authMessage.innerText = `Conta criada com sucesso! Bem-vindo(a), ${name}!`;
+            authMessage.style.display = 'block';
+        }
+
+        // Reseta o formulário e fecha a gaveta após 2 segundos
+        setTimeout(() => {
+            registerForm.reset();
+            if (authMessage) authMessage.style.display = 'none';
+            const authToggle = document.getElementById('auth-toggle');
+            if (authToggle) authToggle.checked = false;
+        }, 2000);
+    });
+}
