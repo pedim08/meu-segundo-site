@@ -3,279 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NobreTech | Tecnologia sem Limites - E-commerce</title>
-    <!-- CSS Externo -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- FontAwesome para Ícones -->
+    <title>NobreTech | Tecnologia sem Limites</title>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR E NAVBAR -->
+    <!-- Header Principal -->
     <header class="header">
-        <div class="top-bar">
-            <!-- Logo -->
+        <div class="header-container">
             <div class="logo">
                 <i class="fa-solid fa-cube logo-icon"></i>
                 <div class="logo-text">
-                    <span class="brand-name">NobreTech</span>
+                    <span class="brand-name"><span class="highlight">Nobre</span>Tech</span>
                     <span class="brand-sub">TECNOLOGIA SEM LIMITES</span>
                 </div>
             </div>
 
-            <!-- Pesquisa -->
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="O que você está procurando? (Ex: RTX 4060, Ryzen, DDR5...)">
+                <input type="text" id="searchInput" placeholder="O que você está procurando?">
                 <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
 
-            <!-- Ações do Usuário -->
-            <div class="user-actions">
-                <div class="user-account" id="openAuthBtn">
+            <div class="header-actions">
+                <div class="user-account" id="userBtn" onclick="openAuthModal()">
                     <i class="fa-regular fa-user"></i>
-                    <div>
-                        <span class="account-title" id="userNameDisplay">Minha conta</span>
-                        <span class="account-sub" id="userSubDisplay">Entrar / Cadastrar</span>
+                    <div class="account-info">
+                        <span class="title" id="userName">Minha conta</span>
+                        <span class="sub" id="userSub">Entrar / Cadastrar</span>
                     </div>
                 </div>
-                <div class="header-icon" title="Favoritos">
+
+                <div class="header-icon-btn" title="Favoritos">
                     <i class="fa-regular fa-heart"></i>
                     <span class="badge">0</span>
+                    <span class="icon-label">Favoritos</span>
                 </div>
-                <div class="header-icon" id="cartToggleBtn" title="Carrinho">
+
+                <div class="header-icon-btn" id="cartBtn" onclick="toggleCart()">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="badge" id="cartBadge">0</span>
+                    <span class="badge" id="cartCount">0</span>
+                    <span class="icon-label">Carrinho</span>
                 </div>
             </div>
         </div>
+    </header>
 
-        <!-- Menu de Categorias -->
-        <nav class="nav-menu">
+    <!-- Submenu de Navegação -->
+    <nav class="nav-bar">
+        <div class="nav-container">
             <button class="all-categories-btn">
                 <i class="fa-solid fa-bars"></i>
                 Todas as categorias
-                <i class="fa-solid fa-chevron-down" style="margin-left: auto;"></i>
+                <i class="fa-solid fa-chevron-down arrow"></i>
             </button>
-            <ul class="nav-links">
-                <li><a href="#" class="active">Início</a></li>
-                <li><a href="#produtos">Produtos</a></li>
+            <ul class="nav-menu">
+                <li><a href="#" class="active" onclick="filterByCategory('all')">Início</a></li>
+                <li><a href="#produtos" onclick="filterByCategory('all')">Produtos</a></li>
                 <li><a href="#categorias">Categorias</a></li>
-                <li><a href="#ofertas">Ofertas</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="#produtos">Ofertas</a></li>
+                <li><a href="#footer">Contato</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <!-- BANNER HERO -->
+    <!-- Banner Hero -->
     <section class="hero-banner">
-        <div class="hero-content">
-            <span class="hero-subtitle">HARDWARE DE VERDADE</span>
-            <h1 class="hero-title">MONTE SEU PC<br><span class="highlight">DO SEU JEITO</span></h1>
-            <p class="hero-description">As melhores peças, as melhores marcas e o melhor desempenho para você.</p>
-            <a href="#produtos" class="btn-primary">VER PRODUTOS <i class="fa-solid fa-chevron-right"></i></a>
-        </div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=80" alt="PC Gamer NobreTech">
-        </div>
-        <div class="hero-features">
-            <div class="feature-item">
-                <i class="fa-solid fa-truck-fast"></i>
-                <div>
-                    <strong>ENTREGA RÁPIDA</strong>
-                    <span>Para todo o Brasil</span>
-                </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-tag">HARDWARE DE VERDADE</span>
+                <h1 class="hero-title">MONTE SEU PC<br><span class="highlight-orange">DO SEU JEITO</span></h1>
+                <p class="hero-desc">As melhores peças, as melhores marcas e o melhor desempenho para você.</p>
+                <a href="#produtos" class="btn-primary">VER PRODUTOS <i class="fa-solid fa-chevron-right"></i></a>
             </div>
-            <div class="feature-item">
-                <i class="fa-solid fa-shield-halved"></i>
-                <div>
-                    <strong>COMPRA SEGURA</strong>
-                    <span>Seus dados protegidos</span>
-                </div>
+
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=80" alt="PC Gamer Setup">
             </div>
-            <div class="feature-item">
-                <i class="fa-solid fa-award"></i>
-                <div>
-                    <strong>PRODUTOS ORIGINAIS</strong>
-                    <span>Com garantia de fábrica</span>
+
+            <div class="hero-features">
+                <div class="feature-card">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <div>
+                        <strong>ENTREGA RÁPIDA</strong>
+                        <p>Para todo o Brasil</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <strong>COMPRA SEGURA</strong>
+                        <p>Seus dados protegidos</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-award"></i>
+                    <div>
+                        <strong>PRODUTOS ORIGINAIS</strong>
+                        <p>Com garantia de fábrica</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CATEGORIAS -->
+    <!-- Barra de Categorias -->
     <section class="categories-section" id="categorias">
-        <div class="category-grid" id="categoryContainer">
-            <!-- Injetado via JavaScript -->
+        <div class="container">
+            <div class="categories-grid">
+                <div class="cat-card active" onclick="filterByCategory('all', this)">
+                    <i class="fa-solid fa-desktop"></i>
+                    <span>PCs e Notebooks</span>
+                </div>
+                <div class="cat-card" onclick="filterByCategory('gpu', this)">
+                    <i class="fa-solid fa-microchip"></i>
+                    <span>Placas de Vídeo</span>
+                </div>
+                <div class="cat-card" onclick="filterByCategory('cpu', this)">
+                    <i class="fa-solid fa-processor"></i>
+                    <span>Processadores</span>
+                </div>
+                <div class="cat-card" onclick="filterByCategory('ram', this)">
+                    <i class="fa-solid fa-memory"></i>
+                    <span>Memórias RAM</span>
+                </div>
+                <div class="cat-card" onclick="filterByCategory('storage', this)">
+                    <i class="fa-solid fa-hard-drive"></i>
+                    <span>Armazenamento</span>
+                </div>
+                <div class="cat-card" onclick="filterByCategory('mobo', this)">
+                    <i class="fa-solid fa-server"></i>
+                    <span>Placas Mãe</span>
+                </div>
+                <div class="cat-card" onclick="filterByCategory('psu', this)">
+                    <i class="fa-solid fa-plug"></i>
+                    <span>Fontes</span>
+                </div>
+                <div class="cat-card" onclick="filterByCategory('case', this)">
+                    <i class="fa-solid fa-box-archive"></i>
+                    <span>Gabinetes</span>
+                </div>
+                <div class="cat-card" onclick="filterByCategory('peripherals', this)">
+                    <i class="fa-solid fa-keyboard"></i>
+                    <span>Periféricos</span>
+                </div>
+                <div class="cat-card" onclick="filterByCategory('monitor', this)">
+                    <i class="fa-solid fa-tv"></i>
+                    <span>Monitores</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- CONTAINER DE PRODUTOS -->
+    <!-- Seção de Produtos -->
     <main class="products-section" id="produtos">
-        <div class="section-header">
-            <h2><span class="bar"></span> CATÁLOGO DE HARDWARE</h2>
-            <div class="filter-pills" id="filterPills">
-                <button class="pill active" data-category="todos">Todos</button>
-                <button class="pill" data-category="gpu">Placas de Vídeo</button>
-                <button class="pill" data-category="cpu">Processadores</button>
-                <button class="pill" data-category="motherboard">Placas-Mãe</button>
-                <button class="pill" data-category="ram">Memórias RAM</button>
-                <button class="pill" data-category="storage">Armazenamento</button>
-                <button class="pill" data-category="psu">Fontes</button>
-                <button class="pill" data-category="case">Gabinetes</button>
-                <button class="pill" data-category="monitor">Monitores</button>
-                <button class="pill" data-category="peripherals">Periféricos</button>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><span class="tag-bar"></span> PRODUTOS EM <span class="highlight-orange">DESTAQUE</span></h2>
+                <span class="view-all">Exibindo catálogo completo</span>
             </div>
-        </div>
 
-        <div class="product-grid" id="productGrid">
-            <!-- Os cards de produtos serão renderizados via Javascript -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Produtos renderizados dinamicamente via JS -->
+            </div>
         </div>
     </main>
 
-    <!-- INFORMAÇÕES ADICIONAIS -->
-    <section class="benefits-bar">
-        <div class="benefit-card">
-            <i class="fa-regular fa-star"></i>
-            <div>
-                <h4>AS MELHORES MARCAS</h4>
-                <p>As principais marcas do mercado</p>
+    <!-- Banner de Confiança -->
+    <section class="trust-banner">
+        <div class="container trust-grid">
+            <div class="trust-item">
+                <i class="fa-regular fa-star"></i>
+                <div>
+                    <strong>AS MELHORES MARCAS</strong>
+                    <p>As principais marcas do mercado</p>
+                </div>
             </div>
-        </div>
-        <div class="benefit-card">
-            <i class="fa-solid fa-shield"></i>
-            <div>
-                <h4>GARANTIA DE QUALIDADE</h4>
-                <p>Produtos originais e confiáveis</p>
+            <div class="trust-item">
+                <i class="fa-solid fa-certificate"></i>
+                <div>
+                    <strong>GARANTIA DE QUALIDADE</strong>
+                    <p>Produtos originais e confiáveis</p>
+                </div>
             </div>
-        </div>
-        <div class="benefit-card">
-            <i class="fa-solid fa-box"></i>
-            <div>
-                <h4>ENTREGA PARA TODO O BRASIL</h4>
-                <p>Com rastreamento em tempo real</p>
+            <div class="trust-item">
+                <i class="fa-solid fa-truck-ramp-box"></i>
+                <div>
+                    <strong>ENTREGA PARA TODO O BRASIL</strong>
+                    <p>Com rastreamento em tempo real</p>
+                </div>
             </div>
-        </div>
-        <div class="benefit-card">
-            <i class="fa-solid fa-headset"></i>
-            <div>
-                <h4>ATENDIMENTO ESPECIALIZADO</h4>
-                <p>Tire suas dúvidas com quem entende</p>
+            <div class="trust-item">
+                <i class="fa-regular fa-comments"></i>
+                <div>
+                    <strong>ATENDIMENTO ESPECIALIZADO</strong>
+                    <p>Tire suas dúvidas com quem entende</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer" id="contato">
-        <div class="footer-grid">
+    <!-- Rodapé -->
+    <footer class="footer" id="footer">
+        <div class="container footer-content">
             <div class="footer-col">
-                <div class="logo">
+                <div class="logo footer-logo">
                     <i class="fa-solid fa-cube logo-icon"></i>
                     <div class="logo-text">
-                        <span class="brand-name">NobreTech</span>
+                        <span class="brand-name"><span class="highlight">Nobre</span>Tech</span>
                         <span class="brand-sub">TECNOLOGIA SEM LIMITES</span>
                     </div>
                 </div>
-                <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.9rem;">
-                    Sua loja especializada em hardware de alto desempenho. O melhor para o seu setup gamer ou profissional.
-                </p>
+                <p class="footer-desc">A melhor loja de informática e hardware de alto desempenho do Brasil. Peças com garantia e entrega rápida.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Atendimento & Suporte</h4>
+                <p><i class="fa-regular fa-envelope"></i> pedrophnobre2000@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> (88) 999502994</p>
+                <p><i class="fa-brands fa-whatsapp"></i> (88) 999502994</p>
+                <p><i class="fa-solid fa-clock"></i> Seg - Sex: 08h às 18h</p>
             </div>
 
             <div class="footer-col">
                 <h4>Navegação</h4>
                 <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#produtos">Produtos</a></li>
-                    <li><a href="#categorias">Categorias</a></li>
-                    <li><a href="#ofertas">Monte seu PC</a></li>
+                    <li><a href="#produtos">Processadores</a></li>
+                    <li><a href="#produtos">Placas de Vídeo</a></li>
+                    <li><a href="#produtos">Placas Mãe</a></li>
+                    <li><a href="#produtos">Memórias RAM</a></li>
+                    <li><a href="#produtos">Armazenamento SSD</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4>Atendimento & Suporte</h4>
-                <ul class="contact-list">
-                    <li><i class="fa-solid fa-envelope"></i> pedrophnobre2000@gmail.com</li>
-                    <li><i class="fa-solid fa-phone"></i> (88) 999502994</li>
-                    <li><i class="fa-brands fa-whatsapp"></i> (88) 999502994</li>
-                    <li><i class="fa-solid fa-clock"></i> Seg a Sex: 08:00h às 18:00h</li>
-                </ul>
+                <h4>Formas de Pagamento</h4>
+                <div class="payment-icons">
+                    <i class="fa-brands fa-pix" title="Pix"></i>
+                    <i class="fa-solid fa-barcode" title="Boleto"></i>
+                    <i class="fa-brands fa-cc-visa" title="Visa"></i>
+                    <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 NobreTech Tecnologia. Todos os direitos reservados. Desenvolvido para portfólio.</p>
+            <div class="container">
+                <p>&copy; 2026 NobreTech Tecnologia. Todos os direitos reservados. Projeto Portfólio inspirado na TerabyteShop.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- PAINEL LATERAL DO CARRINHO (DRAWER) -->
-    <div class="cart-overlay" id="cartOverlay"></div>
-    <div class="cart-drawer" id="cartDrawer">
+    <!-- Overlay & Carrinho Lateral Drawer -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <aside class="cart-drawer" id="cartDrawer">
         <div class="cart-header">
             <h3><i class="fa-solid fa-cart-shopping"></i> Seu Carrinho</h3>
-            <button class="close-cart" id="closeCartBtn">&times;</button>
+            <button class="close-cart" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
         </div>
 
-        <!-- BARRA DE ROLAGEM DEDICADA PARA VÁRIOS PRODUTOS -->
-        <div class="cart-items-container" id="cartItemsContainer">
-            <!-- Produtos do carrinho serão renderizados dinamicamente aqui -->
+        <div class="cart-body" id="cartItemsContainer">
+            <!-- Itens do carrinho aqui -->
         </div>
 
         <div class="cart-footer">
-            <div class="cart-total-row">
-                <span>Total à vista (PIX):</span>
-                <strong id="cartTotalPix">R$ 0,00</strong>
+            <div class="cart-total">
+                <span>Total:</span>
+                <strong id="cartTotalValue">R$ 0,00</strong>
             </div>
-            <div class="cart-total-row" style="font-size: 0.85rem; color: var(--text-muted);">
-                <span>Total no Cartão:</span>
-                <span id="cartTotalCard">R$ 0,00</span>
+            <button class="checkout-btn" onclick="checkout()">
+                FINALIZAR COMPRA <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Modal de Login / Cadastro -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal-card">
+            <button class="close-modal" onclick="closeAuthModal()"><i class="fa-solid fa-xmark"></i></button>
+            <h2 id="modalTitle">Acessar Conta</h2>
+            
+            <form id="authForm" onsubmit="handleAuth(event)">
+                <div class="form-group">
+                    <label for="authEmail">E-mail</label>
+                    <input type="email" id="authEmail" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="authPassword">Senha</label>
+                    <input type="password" id="authPassword" required placeholder="******">
+                </div>
+                <button type="submit" class="btn-primary auth-submit" id="authSubmitBtn">Entrar</button>
+            </form>
+
+            <div class="modal-toggle">
+                <span id="toggleText">Não tem uma conta?</span>
+                <a href="javascript:void(0)" onclick="toggleAuthMode()" id="toggleBtn">Cadastrar-se</a>
             </div>
-            <button class="btn-checkout" onclick="checkout()">Finalizar Compra</button>
-            <button class="btn-clear" onclick="clearCart()">Esvaziar Carrinho</button>
         </div>
     </div>
 
-    <!-- MODAL DE AUTENTICAÇÃO (LOGIN / CADASTRO) -->
-    <div class="auth-overlay" id="authOverlay">
-        <div class="auth-modal">
-            <button class="close-modal" id="closeAuthBtn">&times;</button>
-            <div class="auth-tabs">
-                <button class="auth-tab active" id="loginTabBtn">Entrar</button>
-                <button class="auth-tab" id="registerTabBtn">Cadastrar</button>
-            </div>
-
-            <!-- Form de Login -->
-            <form id="loginForm" class="auth-form active">
-                <h3>Acesse sua conta</h3>
-                <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="email" id="loginEmail" placeholder="seu@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Senha</label>
-                    <input type="password" id="loginPassword" placeholder="******" required>
-                </div>
-                <button type="submit" class="btn-primary" style="width: 100%;">Entrar na Conta</button>
-            </form>
-
-            <!-- Form de Cadastro -->
-            <form id="registerForm" class="auth-form">
-                <h3>Crie sua conta</h3>
-                <div class="form-group">
-                    <label>Nome Completo</label>
-                    <input type="text" id="regName" placeholder="Seu Nome" required>
-                </div>
-                <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="email" id="regEmail" placeholder="seu@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Senha</label>
-                    <input type="password" id="regPassword" placeholder="******" required>
-                </div>
-                <button type="submit" class="btn-primary" style="width: 100%;">Cadastrar</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Script Javascript Externo -->
     <script src="script.js"></script>
 </body>
 </html>
