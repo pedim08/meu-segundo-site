@@ -3,435 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NobreTech - Tecnologia sem Limites</title>
-    <link rel="stylesheet" href="style.css">
+    <title>NobreTech | Tecnologia sem Limites - E-commerce</title>
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- CONTROLADORES DE MODAIS E GAVETAS (CHECKBOXES INVISÍVEIS) -->
-    <input type="checkbox" id="cart-toggle" class="ui-toggle">
-    <input type="checkbox" id="login-toggle" class="ui-toggle">
-    <input type="checkbox" id="favorites-toggle" class="ui-toggle">
-    <input type="checkbox" id="checkout-toggle" class="ui-toggle">
-
-    <!-- CABEÇALHO -->
-    <header class="site-header">
-        <div class="container header-top">
-            <a href="#" class="brand">
-                <div class="brand-mark">N</div>
-                <div class="brand-text">
-                    <strong>Nobre<span>Tech</span></strong>
-                    <small>TECNOLOGIA SEM LIMITES</small>
+    <!-- BARRA SUPERIOR E NAVBAR -->
+    <header class="header">
+        <div class="top-bar">
+            <!-- Logo -->
+            <div class="logo">
+                <i class="fa-solid fa-cube logo-icon"></i>
+                <div class="logo-text">
+                    <span class="brand-name">NobreTech</span>
+                    <span class="brand-sub">TECNOLOGIA SEM LIMITES</span>
                 </div>
-            </a>
-
-            <div class="search-box">
-                <input type="text" placeholder="O que você está procurando?">
-                <button type="button" aria-label="Buscar">
-                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                </button>
             </div>
 
-            <div class="header-actions">
-               <label for="auth-toggle" class="header-action" style="cursor: pointer;" title="Minha Conta">
-    <div class="header-icon-wrap">
-        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-    </div>
-    <span>
-        <b>Minha conta</b>
-        <small>Entrar / Cadastrar</small>
-    </span>
-</label>
+            <!-- Pesquisa -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="O que você está procurando? (Ex: RTX 4060, Ryzen, DDR5...)">
+                <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
 
-                <label for="favorites-toggle" class="header-action">
-                    <div class="header-icon-wrap">
-                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        <i>0</i>
+            <!-- Ações do Usuário -->
+            <div class="user-actions">
+                <div class="user-account" id="openAuthBtn">
+                    <i class="fa-regular fa-user"></i>
+                    <div>
+                        <span class="account-title" id="userNameDisplay">Minha conta</span>
+                        <span class="account-sub" id="userSubDisplay">Entrar / Cadastrar</span>
                     </div>
-                    <span>
-                        <small>Meus</small>
-                        <b>Favoritos</b>
-                    </span>
-                </label>
-
-                <label for="cart-toggle" class="header-action">
-                    <div class="header-icon-wrap">
-                        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                        <i>0</i>
-                    </div>
-                    <span>
-                        <small>Seu</small>
-                        <b>Carrinho</b>
-                    </span>
-                </label>
+                </div>
+                <div class="header-icon" title="Favoritos">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge">0</span>
+                </div>
+                <div class="header-icon" id="cartToggleBtn" title="Carrinho">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge" id="cartBadge">0</span>
+                </div>
             </div>
         </div>
 
-        <nav class="main-nav">
-            <div class="container nav-inner">
-                <div class="category-button">
-                    <div class="hamburger"><i></i><i></i><i></i></div>
-                    <span>Todas as categorias</span>
-                </div>
-                <div class="nav-links">
-                    <a href="#" class="active">Início</a>
-                    <a href="#">Produtos</a>
-                    <a href="#">Categorias</a>
-                    <a href="#">Ofertas</a>
-                    <a href="#">Contato</a>
-                </div>
-            </div>
+        <!-- Menu de Categorias -->
+        <nav class="nav-menu">
+            <button class="all-categories-btn">
+                <i class="fa-solid fa-bars"></i>
+                Todas as categorias
+                <i class="fa-solid fa-chevron-down" style="margin-left: auto;"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#categorias">Categorias</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
         </nav>
     </header>
 
-    <!-- BANNER PRINCIPAL (HERO) -->
-    <section class="hero">
-        <div class="hero-shape hero-shape-left"></div>
-        <div class="hero-shape hero-shape-right"></div>
-        <div class="container hero-content">
-            <div class="hero-copy">
-                <p class="eyebrow">HARDWARE DE VERDADE</p>
-                <h1>MONTE SEU PC <span>DO SEU JEITO</span></h1>
-                <p>As melhores peças, as melhores marcas e o melhor desempenho para você.</p>
-                <div class="hero-buttons">
-                    <a href="#produtos" class="btn btn-orange">VER PRODUTOS &rsaquo;</a>
+    <!-- BANNER HERO -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <span class="hero-subtitle">HARDWARE DE VERDADE</span>
+            <h1 class="hero-title">MONTE SEU PC<br><span class="highlight">DO SEU JEITO</span></h1>
+            <p class="hero-description">As melhores peças, as melhores marcas e o melhor desempenho para você.</p>
+            <a href="#produtos" class="btn-primary">VER PRODUTOS <i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=80" alt="PC Gamer NobreTech">
+        </div>
+        <div class="hero-features">
+            <div class="feature-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div>
+                    <strong>ENTREGA RÁPIDA</strong>
+                    <span>Para todo o Brasil</span>
                 </div>
             </div>
-
-            <div class="hero-pc">
-                <div class="pc-glow"></div>
-                <div class="pc-case">
-                    <div class="case-glass">
-                        <div class="fan fan-1"></div>
-                        <div class="fan fan-2"></div>
-                        <div class="fan fan-3"></div>
-                        <div class="gpu-label">GEFORCE RTX</div>
-                    </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div>
+                    <strong>COMPRA SEGURA</strong>
+                    <span>Seus dados protegidos</span>
                 </div>
             </div>
-
-            <div class="hero-benefits">
-                <div class="benefit">
-                    <span>⚡</span>
-                    <div>
-                        <b>ENTREGA RÁPIDA</b>
-                        <small>Para todo o Brasil</small>
-                    </div>
-                </div>
-                <div class="benefit">
-                    <span>🛡️</span>
-                    <div>
-                        <b>COMPRA SEGURA</b>
-                        <small>Seus dados protegidos</small>
-                    </div>
-                </div>
-                <div class="benefit">
-                    <span>🏆</span>
-                    <div>
-                        <b>PRODUTOS ORIGINAIS</b>
-                        <small>Com garantia de fábrica</small>
-                    </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-award"></i>
+                <div>
+                    <strong>PRODUTOS ORIGINAIS</strong>
+                    <span>Com garantia de fábrica</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CATEGORIAS -->
-    <section class="categories-section container">
-        <div class="category-grid">
-            <div class="category-card active">
-                <div class="category-icon">💻</div>
-                <b>PCs e Notebooks</b>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">🎮</div>
-                <b>Placas de Vídeo</b>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">🔲</div>
-                <b>Processadores</b>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">📼</div>
-                <b>Memórias RAM</b>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">💾</div>
-                <b>Armazenamento</b>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">🎛️</div>
-                <b>Placas Mãe</b>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">⚡</div>
-                <b>Fontes</b>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">🖥️</div>
-                <b>Gabinetes</b>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">⌨️</div>
-                <b>Periféricos</b>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">📺</div>
-                <b>Monitores</b>
-            </div>
+    <section class="categories-section" id="categorias">
+        <div class="category-grid" id="categoryContainer">
+            <!-- Injetado via JavaScript -->
         </div>
     </section>
 
-    <!-- PRODUTOS EM DESTAQUE -->
-    <section id="produtos" class="products-section container">
-        <div class="section-heading">
-            <h2>PRODUTOS EM <span>DESTAQUE</span></h2>
-            <a href="#">Ver todos os produtos &rarr;</a>
-        </div>
-
-        <div class="product-grid">
-            <!-- Produto 1 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="offer-tag">OFERTA</span>
-                    <span class="heart">&#9825;</span>
-                    <div class="gpu-shape">
-                        <div class="gpu-fan"></div>
-                        <div class="gpu-fan"></div>
-                        <b>GALAX RTX 3060</b>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h3>Placa de Vídeo Galax GeForce RTX 3060 12GB GDDR6</h3>
-                    <div class="stars">★★★★★ <small>(48)</small></div>
-                    <del>R$ 2.299,90</del>
-                    <div class="price">R$ 1.999,90</div>
-                    <div class="installment">10x de R$ 199,99 sem juros</div>
-                    <div class="product-actions">
-                        <button class="btn-product">Adicionar ao carrinho</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produto 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="heart">&#9825;</span>
-                    <div class="cpu-box">
-                        <span class="cpu-logo">AMD</span>
-                        <b>RYZEN</b>
-                        <strong>5</strong>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h3>Processador AMD Ryzen 5 5600 3.5GHz (4.4GHz Turbo)</h3>
-                    <div class="stars">★★★★★ <small>(92)</small></div>
-                    <del>R$ 999,90</del>
-                    <div class="price">R$ 799,90</div>
-                    <div class="installment">10x de R$ 79,99 sem juros</div>
-                    <div class="product-actions">
-                        <button class="btn-product">Adicionar ao carrinho</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produto 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="heart">&#9825;</span>
-                    <div>
-                        <div class="ram-stick">VENGEANCE LPX</div>
-                        <div class="ram-stick">VENGEANCE LPX</div>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h3>Memória Corsair Vengeance LPX 16GB (2x8GB) DDR4 3200MHz</h3>
-                    <div class="stars">★★★★★ <small>(34)</small></div>
-                    <del>R$ 359,90</del>
-                    <div class="price">R$ 299,90</div>
-                    <div class="installment">6x de R$ 49,98 sem juros</div>
-                    <div class="product-actions">
-                        <button class="btn-product">Adicionar ao carrinho</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produto 4 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="heart">&#9825;</span>
-                    <div class="ssd-drive">
-                        <small style="color:#fff; font-size: 0.6rem;">Kingston</small>
-                        <b style="color:var(--primary); font-size: 0.75rem;">NV2 M.2</b>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h3>SSD Kingston NV2 1TB NVMe M.2 2280</h3>
-                    <div class="stars">★★★★★ <small>(61)</small></div>
-                    <del>R$ 529,90</del>
-                    <div class="price">R$ 449,90</div>
-                    <div class="installment">8x de R$ 56,23 sem juros</div>
-                    <div class="product-actions">
-                        <button class="btn-product">Adicionar ao carrinho</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produto 5 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="heart">&#9825;</span>
-                    <div class="motherboard-shape">
-                        <small style="color:#fff; font-size:0.55rem;">TUF GAMING</small>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h3>Placa Mãe ASUS TUF Gaming B450M-Plus II</h3>
-                    <div class="stars">★★★★★ <small>(27)</small></div>
-                    <del>R$ 799,90</del>
-                    <div class="price">R$ 699,90</div>
-                    <div class="installment">10x de R$ 69,99 sem juros</div>
-                    <div class="product-actions">
-                        <button class="btn-product">Adicionar ao carrinho</button>
-                    </div>
-                </div>
+    <!-- CONTAINER DE PRODUTOS -->
+    <main class="products-section" id="produtos">
+        <div class="section-header">
+            <h2><span class="bar"></span> CATÁLOGO DE HARDWARE</h2>
+            <div class="filter-pills" id="filterPills">
+                <button class="pill active" data-category="todos">Todos</button>
+                <button class="pill" data-category="gpu">Placas de Vídeo</button>
+                <button class="pill" data-category="cpu">Processadores</button>
+                <button class="pill" data-category="motherboard">Placas-Mãe</button>
+                <button class="pill" data-category="ram">Memórias RAM</button>
+                <button class="pill" data-category="storage">Armazenamento</button>
+                <button class="pill" data-category="psu">Fontes</button>
+                <button class="pill" data-category="case">Gabinetes</button>
+                <button class="pill" data-category="monitor">Monitores</button>
+                <button class="pill" data-category="peripherals">Periféricos</button>
             </div>
         </div>
-    </section>
 
-    <!-- RODAPÉ -->
-    <footer class="footer">
-        <div class="container footer-main">
+        <div class="product-grid" id="productGrid">
+            <!-- Os cards de produtos serão renderizados via Javascript -->
+        </div>
+    </main>
+
+    <!-- INFORMAÇÕES ADICIONAIS -->
+    <section class="benefits-bar">
+        <div class="benefit-card">
+            <i class="fa-regular fa-star"></i>
             <div>
-                <a href="#" class="brand">
-                    <div class="brand-mark">N</div>
-                    <div class="brand-text">
-                        <strong>Nobre<span>Tech</span></strong>
+                <h4>AS MELHORES MARCAS</h4>
+                <p>As principais marcas do mercado</p>
+            </div>
+        </div>
+        <div class="benefit-card">
+            <i class="fa-solid fa-shield"></i>
+            <div>
+                <h4>GARANTIA DE QUALIDADE</h4>
+                <p>Produtos originais e confiáveis</p>
+            </div>
+        </div>
+        <div class="benefit-card">
+            <i class="fa-solid fa-box"></i>
+            <div>
+                <h4>ENTREGA PARA TODO O BRASIL</h4>
+                <p>Com rastreamento em tempo real</p>
+            </div>
+        </div>
+        <div class="benefit-card">
+            <i class="fa-solid fa-headset"></i>
+            <div>
+                <h4>ATENDIMENTO ESPECIALIZADO</h4>
+                <p>Tire suas dúvidas com quem entende</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contato">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo">
+                    <i class="fa-solid fa-cube logo-icon"></i>
+                    <div class="logo-text">
+                        <span class="brand-name">NobreTech</span>
+                        <span class="brand-sub">TECNOLOGIA SEM LIMITES</span>
                     </div>
-                </a>
-                <p>Sua loja especializada em hardware de alta performance e montagem de PCs gamer.</p>
+                </div>
+                <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.9rem;">
+                    Sua loja especializada em hardware de alto desempenho. O melhor para o seu setup gamer ou profissional.
+                </p>
             </div>
-            <div class="footer-column">
-                <h3>INSTITUCIONAL</h3>
-                <a href="#">Sobre Nós</a>
-                <a href="#">Políticas de Privacidade</a>
-                <a href="#">Termos e Condições</a>
+
+            <div class="footer-col">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#categorias">Categorias</a></li>
+                    <li><a href="#ofertas">Monte seu PC</a></li>
+                </ul>
             </div>
-            <div class="footer-column">
-                <h3>AJUDA</h3>
-                <a href="#">Trocas e Devoluções</a>
-                <a href="#">Fretes e Entregas</a>
-                <a href="#">Fale Conosco</a>
-            </div>
-            <div class="footer-column">
-                <h3>CONTATO</h3>
-                <span>pedrophnobre2000@gmail.com</span>
-                <span>(88) 999502994</span>
+
+            <div class="footer-col">
+                <h4>Atendimento & Suporte</h4>
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-envelope"></i> pedrophnobre2000@gmail.com</li>
+                    <li><i class="fa-solid fa-phone"></i> (88) 999502994</li>
+                    <li><i class="fa-brands fa-whatsapp"></i> (88) 999502994</li>
+                    <li><i class="fa-solid fa-clock"></i> Seg a Sex: 08:00h às 18:00h</li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2026 NobreTech. Todos os direitos reservados.</p>
-            </div>
+            <p>&copy; 2026 NobreTech Tecnologia. Todos os direitos reservados. Desenvolvido para portfólio.</p>
         </div>
     </footer>
 
-    <!-- GAVETA DO CARRINHO (INICIA VAZIA) -->
-    <label for="cart-toggle" class="cart-overlay"></label>
-    <div class="cart-drawer">
-        <div class="cart-head">
-            <h2>Seu Carrinho</h2>
-            <label for="cart-toggle" class="modal-close">&times;</label>
-        </div>
-
-        <!-- ÁREA DINÂMICA (PREENCHIDA E GERENCIADA PELO SCRIPT.JS) -->
-        <div class="cart-items">
-            <p class="cart-empty-msg">Seu carrinho está vazio.</p>
-        </div>
-
-        <div class="cart-summary">
-            <div>
-                <span>Subtotal</span>
-                <strong>R$ 0,00</strong>
-            </div>
-            <div>
-                <span>Frete</span>
-                <span class="free">Grátis</span>
-            </div>
-            <div class="total">
-                <span>Total</span>
-                <strong>R$ 0,00</strong>
-            </div>
-            
-            <button type="button" class="btn btn-orange checkout-button">
-                Finalizar Compra
-            </button>
-            <label for="cart-toggle" class="continue-shopping">
-                Continuar Comprando
-            </label>
-        </div>
-    </div>
-
-    <!-- CHAMADA DO SCRIPT DE ADICIONAR/REMOVER PRODUTOS -->
-    <script src="script.js"></script>
-
-<!-- PAINEL LATERAL DE CADASTRO -->
-<input type="checkbox" id="auth-toggle" class="drawer-toggle">
-<div class="cart-drawer-overlay">
-    <label for="auth-toggle" class="drawer-overlay-bg"></label>
-    <div class="cart-drawer" style="max-width: 400px; padding: 25px;">
+    <!-- PAINEL LATERAL DO CARRINHO (DRAWER) -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
         <div class="cart-header">
-            <h2>Criar Conta</h2>
-            <label for="auth-toggle" class="cart-close" style="cursor: pointer;">&times;</label>
-        </div>
-        
-        <form id="register-form" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
-            <div>
-                <label style="display: block; margin-bottom: 5px; font-weight: 500;">Nome Completo</label>
-                <input type="text" id="reg-name" required placeholder="Digite seu nome" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-            </div>
-            <div>
-                <label style="display: block; margin-bottom: 5px; font-weight: 500;">E-mail</label>
-                <input type="email" id="reg-email" required placeholder="seu@email.com" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-            </div>
-            <div>
-                <label style="display: block; margin-bottom: 5px; font-weight: 500;">Senha</label>
-                <input type="password" id="reg-password" required placeholder="Mínimo 6 caracteres" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-            </div>
-            <button type="submit" class="btn-primary" style="margin-top: 10px; padding: 12px; border: none; cursor: pointer; border-radius: 6px; font-weight: bold;">Cadastrar</button>
-        </form>
-        
-        <p id="auth-message" style="margin-top: 15px; text-align: center; color: #28a745; font-weight: bold; display: none;"></p>
-    </div>
-</div>
-<!-- PAINEL LATERAL DE CADASTRO -->
-    <label for="auth-toggle" class="auth-overlay"></label>
-    <div class="auth-drawer">
-        <div class="cart-head">
-            <h2>Criar Conta</h2>
-            <label for="auth-toggle" class="modal-close">&times;</label>
+            <h3><i class="fa-solid fa-cart-shopping"></i> Seu Carrinho</h3>
+            <button class="close-cart" id="closeCartBtn">&times;</button>
         </div>
 
-        <form id="register-form" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
-            <div>
-                <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #fff;">Nome Completo</label>
-                <input type="text" id="reg-name" required placeholder="Digite seu nome" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff;">
-            </div>
-            <div>
-                <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #fff;">E-mail</label>
-                <input type="email" id="reg-email" required placeholder="seu@email.com" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff;">
-            </div>
-            <div>
-                <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #fff;">Senha</label>
-                <input type="password" id="reg-password" required placeholder="Mínimo 6 caracteres" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff;">
-            </div>
-            <button type="submit" class="btn btn-orange" style="margin-top: 10px; width: 100%; padding: 12px; font-weight: bold; cursor: pointer;">Cadastrar</button>
-        </form>
+        <!-- BARRA DE ROLAGEM DEDICADA PARA VÁRIOS PRODUTOS -->
+        <div class="cart-items-container" id="cartItemsContainer">
+            <!-- Produtos do carrinho serão renderizados dinamicamente aqui -->
+        </div>
 
-        <p id="auth-message" style="margin-top: 15px; text-align: center; color: #10b981; font-weight: bold; display: none;"></p>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Total à vista (PIX):</span>
+                <strong id="cartTotalPix">R$ 0,00</strong>
+            </div>
+            <div class="cart-total-row" style="font-size: 0.85rem; color: var(--text-muted);">
+                <span>Total no Cartão:</span>
+                <span id="cartTotalCard">R$ 0,00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Finalizar Compra</button>
+            <button class="btn-clear" onclick="clearCart()">Esvaziar Carrinho</button>
+        </div>
     </div>
+
+    <!-- MODAL DE AUTENTICAÇÃO (LOGIN / CADASTRO) -->
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-modal">
+            <button class="close-modal" id="closeAuthBtn">&times;</button>
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTabBtn">Entrar</button>
+                <button class="auth-tab" id="registerTabBtn">Cadastrar</button>
+            </div>
+
+            <!-- Form de Login -->
+            <form id="loginForm" class="auth-form active">
+                <h3>Acesse sua conta</h3>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" id="loginEmail" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" id="loginPassword" placeholder="******" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Entrar na Conta</button>
+            </form>
+
+            <!-- Form de Cadastro -->
+            <form id="registerForm" class="auth-form">
+                <h3>Crie sua conta</h3>
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input type="text" id="regName" placeholder="Seu Nome" required>
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" id="regEmail" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" id="regPassword" placeholder="******" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script Javascript Externo -->
+    <script src="script.js"></script>
 </body>
 </html>
