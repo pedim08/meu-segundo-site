@@ -407,5 +407,31 @@
         <p id="auth-message" style="margin-top: 15px; text-align: center; color: #28a745; font-weight: bold; display: none;"></p>
     </div>
 </div>
+<!-- PAINEL LATERAL DE CADASTRO -->
+    <label for="auth-toggle" class="auth-overlay"></label>
+    <div class="auth-drawer">
+        <div class="cart-head">
+            <h2>Criar Conta</h2>
+            <label for="auth-toggle" class="modal-close">&times;</label>
+        </div>
+
+        <form id="register-form" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #fff;">Nome Completo</label>
+                <input type="text" id="reg-name" required placeholder="Digite seu nome" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff;">
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #fff;">E-mail</label>
+                <input type="email" id="reg-email" required placeholder="seu@email.com" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff;">
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #fff;">Senha</label>
+                <input type="password" id="reg-password" required placeholder="Mínimo 6 caracteres" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff;">
+            </div>
+            <button type="submit" class="btn btn-orange" style="margin-top: 10px; width: 100%; padding: 12px; font-weight: bold; cursor: pointer;">Cadastrar</button>
+        </form>
+
+        <p id="auth-message" style="margin-top: 15px; text-align: center; color: #10b981; font-weight: bold; display: none;"></p>
+    </div>
 </body>
 </html>
