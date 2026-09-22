@@ -124,7 +124,7 @@ const products = [
         category: "gpu",
         categoryName: "Placa de Vídeo",
         name: "GeForce RTX 3060 12GB GDDR6",
-        image: "https://unsplash.com/pt-br/fotografias/um-close-up-de-uma-placa-de-video-em-um-fundo-amarelo-ipVMl4H6g6o",
+        image:"https://images.unsplash.com/photo-1727895949000-da3c10a7d562?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",    
          price: 1999.90, 
         oldPrice: 2299.90,
         offer: true
