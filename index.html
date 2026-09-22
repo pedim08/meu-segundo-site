@@ -1,311 +1,813 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NobreTech | Tecnologia sem Limites</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
+
+    <meta name="description"
+        content="NobreTech - Hardware, computadores, periféricos e tecnologia.">
+
+    <title>NobreTech | Tecnologia sem limites</title>
+
+    <!-- Ícones -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Fonte -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- Header Principal -->
+    <!-- ======================================================
+         HEADER
+    ======================================================= -->
+
     <header class="header">
+
         <div class="header-container">
-            <div class="logo">
-                <i class="fa-solid fa-cube logo-icon"></i>
+
+            <!-- LOGO -->
+            <a href="#" class="logo">
+
+                <div class="logo-n">
+                    N
+                </div>
+
                 <div class="logo-text">
-                    <span class="brand-name"><span class="highlight">Nobre</span>Tech</span>
-                    <span class="brand-sub">TECNOLOGIA SEM LIMITES</span>
+                    <strong>Nobre<span>Tech</span></strong>
+                    <small>TECNOLOGIA SEM LIMITES</small>
                 </div>
+
+            </a>
+
+
+            <!-- PESQUISA -->
+            <div class="search-container">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="O que você está procurando?">
+
+                <button id="searchButton">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
             </div>
 
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="O que você está procurando?">
-                <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
 
+            <!-- CONTA -->
             <div class="header-actions">
-                <div class="user-account" id="userBtn" onclick="openAuthModal()">
+
+                <button class="header-action" id="accountButton">
+
                     <i class="fa-regular fa-user"></i>
-                    <div class="account-info">
-                        <span class="title" id="userName">Minha conta</span>
-                        <span class="sub" id="userSub">Entrar / Cadastrar</span>
+
+                    <div>
+                        <strong id="accountName">Minha conta</strong>
+                        <small id="accountStatus">Entrar / Cadastrar</small>
                     </div>
-                </div>
 
-                <div class="header-icon-btn" title="Favoritos">
+                </button>
+
+
+                <button class="header-action" id="favoritesButton">
+
                     <i class="fa-regular fa-heart"></i>
-                    <span class="badge">0</span>
-                    <span class="icon-label">Favoritos</span>
+
+                    <div>
+                        <strong>Favoritos</strong>
+                        <small>
+                            <span id="favoriteCount">0</span> favoritos
+                        </small>
+                    </div>
+
+                </button>
+
+
+                <button class="header-action cart-button" id="cartButton">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <div>
+                        <strong>Carrinho</strong>
+                        <small>
+                            <span id="cartCount">0</span> itens
+                        </small>
+                    </div>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+             MENU
+        =================================================== -->
+
+        <nav class="main-nav">
+
+            <div class="nav-container">
+
+                <button class="category-button" id="categoryButton">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                    Todas as categorias
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+
+                <div class="nav-links">
+
+                    <a href="#" class="active">Início</a>
+
+                    <a href="#products">Produtos</a>
+
+                    <a href="#categories">Categorias</a>
+
+                    <a href="#offers">Ofertas</a>
+
+                    <a href="#contact">Contato</a>
+
                 </div>
 
-                <div class="header-icon-btn" id="cartBtn" onclick="toggleCart()">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="badge" id="cartCount">0</span>
-                    <span class="icon-label">Carrinho</span>
-                </div>
             </div>
-        </div>
+
+        </nav>
+
     </header>
 
-    <!-- Submenu de Navegação -->
-    <nav class="nav-bar">
-        <div class="nav-container">
-            <button class="all-categories-btn">
-                <i class="fa-solid fa-bars"></i>
-                Todas as categorias
-                <i class="fa-solid fa-chevron-down arrow"></i>
-            </button>
-            <ul class="nav-menu">
-                <li><a href="#" class="active" onclick="filterByCategory('all')">Início</a></li>
-                <li><a href="#produtos" onclick="filterByCategory('all')">Produtos</a></li>
-                <li><a href="#categorias">Categorias</a></li>
-                <li><a href="#produtos">Ofertas</a></li>
-                <li><a href="#footer">Contato</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Banner Hero -->
-    <section class="hero-banner">
-        <div class="hero-container">
-            <div class="hero-content">
-                <span class="hero-tag">HARDWARE DE VERDADE</span>
-                <h1 class="hero-title">MONTE SEU PC<br><span class="highlight-orange">DO SEU JEITO</span></h1>
-                <p class="hero-desc">As melhores peças, as melhores marcas e o melhor desempenho para você.</p>
-                <a href="#produtos" class="btn-primary">VER PRODUTOS <i class="fa-solid fa-chevron-right"></i></a>
-            </div>
+    <!-- ======================================================
+         MENU DE CATEGORIAS
+    ======================================================= -->
 
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=80" alt="PC Gamer Setup">
-            </div>
+    <div class="category-dropdown" id="categoryDropdown">
 
-            <div class="hero-features">
-                <div class="feature-card">
-                    <i class="fa-solid fa-truck-fast"></i>
-                    <div>
-                        <strong>ENTREGA RÁPIDA</strong>
-                        <p>Para todo o Brasil</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <div>
-                        <strong>COMPRA SEGURA</strong>
-                        <p>Seus dados protegidos</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <i class="fa-solid fa-award"></i>
-                    <div>
-                        <strong>PRODUTOS ORIGINAIS</strong>
-                        <p>Com garantia de fábrica</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <button data-category="all">
+            <i class="fa-solid fa-border-all"></i>
+            Todos os produtos
+        </button>
 
-    <!-- Barra de Categorias -->
-    <section class="categories-section" id="categorias">
-        <div class="container">
-            <div class="categories-grid">
-                <div class="cat-card active" onclick="filterByCategory('all', this)">
-                    <i class="fa-solid fa-desktop"></i>
-                    <span>PCs e Notebooks</span>
-                </div>
-                <div class="cat-card" onclick="filterByCategory('gpu', this)">
-                    <i class="fa-solid fa-microchip"></i>
-                    <span>Placas de Vídeo</span>
-                </div>
-                <div class="cat-card" onclick="filterByCategory('cpu', this)">
-                    <i class="fa-solid fa-processor"></i>
-                    <span>Processadores</span>
-                </div>
-                <div class="cat-card" onclick="filterByCategory('ram', this)">
-                    <i class="fa-solid fa-memory"></i>
-                    <span>Memórias RAM</span>
-                </div>
-                <div class="cat-card" onclick="filterByCategory('storage', this)">
-                    <i class="fa-solid fa-hard-drive"></i>
-                    <span>Armazenamento</span>
-                </div>
-                <div class="cat-card" onclick="filterByCategory('mobo', this)">
-                    <i class="fa-solid fa-server"></i>
-                    <span>Placas Mãe</span>
-                </div>
-                <div class="cat-card" onclick="filterByCategory('psu', this)">
-                    <i class="fa-solid fa-plug"></i>
-                    <span>Fontes</span>
-                </div>
-                <div class="cat-card" onclick="filterByCategory('case', this)">
-                    <i class="fa-solid fa-box-archive"></i>
-                    <span>Gabinetes</span>
-                </div>
-                <div class="cat-card" onclick="filterByCategory('peripherals', this)">
-                    <i class="fa-solid fa-keyboard"></i>
-                    <span>Periféricos</span>
-                </div>
-                <div class="cat-card" onclick="filterByCategory('monitor', this)">
-                    <i class="fa-solid fa-tv"></i>
-                    <span>Monitores</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        <button data-category="pc">
+            <i class="fa-solid fa-computer"></i>
+            PCs e Notebooks
+        </button>
 
-    <!-- Seção de Produtos -->
-    <main class="products-section" id="produtos">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title"><span class="tag-bar"></span> PRODUTOS EM <span class="highlight-orange">DESTAQUE</span></h2>
-                <span class="view-all">Exibindo catálogo completo</span>
-            </div>
+        <button data-category="gpu">
+            <i class="fa-solid fa-display"></i>
+            Placas de Vídeo
+        </button>
 
-            <div class="products-grid" id="productsGrid">
-                <!-- Produtos renderizados dinamicamente via JS -->
-            </div>
-        </div>
-    </main>
+        <button data-category="cpu">
+            <i class="fa-solid fa-microchip"></i>
+            Processadores
+        </button>
 
-    <!-- Banner de Confiança -->
-    <section class="trust-banner">
-        <div class="container trust-grid">
-            <div class="trust-item">
-                <i class="fa-regular fa-star"></i>
-                <div>
-                    <strong>AS MELHORES MARCAS</strong>
-                    <p>As principais marcas do mercado</p>
-                </div>
-            </div>
-            <div class="trust-item">
-                <i class="fa-solid fa-certificate"></i>
-                <div>
-                    <strong>GARANTIA DE QUALIDADE</strong>
-                    <p>Produtos originais e confiáveis</p>
-                </div>
-            </div>
-            <div class="trust-item">
-                <i class="fa-solid fa-truck-ramp-box"></i>
-                <div>
-                    <strong>ENTREGA PARA TODO O BRASIL</strong>
-                    <p>Com rastreamento em tempo real</p>
-                </div>
-            </div>
-            <div class="trust-item">
-                <i class="fa-regular fa-comments"></i>
-                <div>
-                    <strong>ATENDIMENTO ESPECIALIZADO</strong>
-                    <p>Tire suas dúvidas com quem entende</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <button data-category="ram">
+            <i class="fa-solid fa-memory"></i>
+            Memórias RAM
+        </button>
 
-    <!-- Rodapé -->
-    <footer class="footer" id="footer">
-        <div class="container footer-content">
-            <div class="footer-col">
-                <div class="logo footer-logo">
-                    <i class="fa-solid fa-cube logo-icon"></i>
-                    <div class="logo-text">
-                        <span class="brand-name"><span class="highlight">Nobre</span>Tech</span>
-                        <span class="brand-sub">TECNOLOGIA SEM LIMITES</span>
-                    </div>
-                </div>
-                <p class="footer-desc">A melhor loja de informática e hardware de alto desempenho do Brasil. Peças com garantia e entrega rápida.</p>
-            </div>
+        <button data-category="storage">
+            <i class="fa-solid fa-hard-drive"></i>
+            Armazenamento
+        </button>
 
-            <div class="footer-col">
-                <h4>Atendimento & Suporte</h4>
-                <p><i class="fa-regular fa-envelope"></i> pedrophnobre2000@gmail.com</p>
-                <p><i class="fa-solid fa-phone"></i> (88) 999502994</p>
-                <p><i class="fa-brands fa-whatsapp"></i> (88) 999502994</p>
-                <p><i class="fa-solid fa-clock"></i> Seg - Sex: 08h às 18h</p>
-            </div>
+        <button data-category="motherboard">
+            <i class="fa-solid fa-server"></i>
+            Placas-Mãe
+        </button>
 
-            <div class="footer-col">
-                <h4>Navegação</h4>
-                <ul>
-                    <li><a href="#produtos">Processadores</a></li>
-                    <li><a href="#produtos">Placas de Vídeo</a></li>
-                    <li><a href="#produtos">Placas Mãe</a></li>
-                    <li><a href="#produtos">Memórias RAM</a></li>
-                    <li><a href="#produtos">Armazenamento SSD</a></li>
-                </ul>
-            </div>
+        <button data-category="psu">
+            <i class="fa-solid fa-bolt"></i>
+            Fontes
+        </button>
 
-            <div class="footer-col">
-                <h4>Formas de Pagamento</h4>
-                <div class="payment-icons">
-                    <i class="fa-brands fa-pix" title="Pix"></i>
-                    <i class="fa-solid fa-barcode" title="Boleto"></i>
-                    <i class="fa-brands fa-cc-visa" title="Visa"></i>
-                    <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2026 NobreTech Tecnologia. Todos os direitos reservados. Projeto Portfólio inspirado na TerabyteShop.</p>
-            </div>
-        </div>
-    </footer>
+        <button data-category="case">
+            <i class="fa-solid fa-box"></i>
+            Gabinetes
+        </button>
 
-    <!-- Overlay & Carrinho Lateral Drawer -->
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-    <aside class="cart-drawer" id="cartDrawer">
-        <div class="cart-header">
-            <h3><i class="fa-solid fa-cart-shopping"></i> Seu Carrinho</h3>
-            <button class="close-cart" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
-        </div>
+        <button data-category="peripherals">
+            <i class="fa-solid fa-keyboard"></i>
+            Periféricos
+        </button>
 
-        <div class="cart-body" id="cartItemsContainer">
-            <!-- Itens do carrinho aqui -->
-        </div>
+        <button data-category="monitor">
+            <i class="fa-solid fa-desktop"></i>
+            Monitores
+        </button>
 
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <strong id="cartTotalValue">R$ 0,00</strong>
-            </div>
-            <button class="checkout-btn" onclick="checkout()">
-                FINALIZAR COMPRA <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
-    </aside>
-
-    <!-- Modal de Login / Cadastro -->
-    <div class="modal-overlay" id="authModal">
-        <div class="modal-card">
-            <button class="close-modal" onclick="closeAuthModal()"><i class="fa-solid fa-xmark"></i></button>
-            <h2 id="modalTitle">Acessar Conta</h2>
-            
-            <form id="authForm" onsubmit="handleAuth(event)">
-                <div class="form-group">
-                    <label for="authEmail">E-mail</label>
-                    <input type="email" id="authEmail" required placeholder="seu@email.com">
-                </div>
-                <div class="form-group">
-                    <label for="authPassword">Senha</label>
-                    <input type="password" id="authPassword" required placeholder="******">
-                </div>
-                <button type="submit" class="btn-primary auth-submit" id="authSubmitBtn">Entrar</button>
-            </form>
-
-            <div class="modal-toggle">
-                <span id="toggleText">Não tem uma conta?</span>
-                <a href="javascript:void(0)" onclick="toggleAuthMode()" id="toggleBtn">Cadastrar-se</a>
-            </div>
-        </div>
     </div>
 
+
+    <!-- ======================================================
+         HERO
+    ======================================================= -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-background"></div>
+
+            <div class="hero-container">
+
+                <div class="hero-content">
+
+                    <span class="hero-small">
+                        HARDWARE DE VERDADE
+                    </span>
+
+                    <h1>
+                        MONTE SEU PC
+                        <span>DO SEU JEITO</span>
+                    </h1>
+
+                    <p>
+                        As melhores peças, as melhores marcas
+                        e tecnologia para você.
+                    </p>
+
+                    <button class="primary-button" onclick="scrollToProducts()">
+                        VER PRODUTOS
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+
+                <div class="hero-image">
+
+                    <div class="pc-glow"></div>
+
+                    <div class="fake-monitor">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+
+                    <div class="fake-pc">
+
+                        <div class="pc-fan fan-one"></div>
+                        <div class="pc-fan fan-two"></div>
+                        <div class="pc-fan fan-three"></div>
+
+                        <div class="pc-gpu">
+                            GEFORCE RTX
+                        </div>
+
+                        <div class="pc-ram"></div>
+                        <div class="pc-ram second"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-benefits">
+
+                    <div class="benefit">
+
+                        <i class="fa-solid fa-truck-fast"></i>
+
+                        <div>
+                            <strong>ENTREGA RÁPIDA</strong>
+                            <span>Para todo o Brasil</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        <div>
+                            <strong>COMPRA SEGURA</strong>
+                            <span>Seus dados protegidos</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <i class="fa-solid fa-certificate"></i>
+
+                        <div>
+                            <strong>PRODUTOS ORIGINAIS</strong>
+                            <span>Garantia de fábrica</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             CATEGORIAS
+        =================================================== -->
+
+        <section class="categories-section" id="categories">
+
+            <div class="categories-container" id="categoryCards">
+
+                <button class="category-card active" data-category="pc">
+                    <i class="fa-solid fa-computer"></i>
+                    <span>PCs e<br>Notebooks</span>
+                </button>
+
+                <button class="category-card" data-category="gpu">
+                    <i class="fa-solid fa-display"></i>
+                    <span>Placas de<br>Vídeo</span>
+                </button>
+
+                <button class="category-card" data-category="cpu">
+                    <i class="fa-solid fa-microchip"></i>
+                    <span>Processadores</span>
+                </button>
+
+                <button class="category-card" data-category="ram">
+                    <i class="fa-solid fa-memory"></i>
+                    <span>Memórias<br>RAM</span>
+                </button>
+
+                <button class="category-card" data-category="storage">
+                    <i class="fa-solid fa-hard-drive"></i>
+                    <span>Armazenamento</span>
+                </button>
+
+                <button class="category-card" data-category="motherboard">
+                    <i class="fa-solid fa-server"></i>
+                    <span>Placas-Mãe</span>
+                </button>
+
+                <button class="category-card" data-category="psu">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Fontes</span>
+                </button>
+
+                <button class="category-card" data-category="case">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Gabinetes</span>
+                </button>
+
+                <button class="category-card" data-category="peripherals">
+                    <i class="fa-solid fa-keyboard"></i>
+                    <span>Periféricos</span>
+                </button>
+
+                <button class="category-card" data-category="monitor">
+                    <i class="fa-solid fa-desktop"></i>
+                    <span>Monitores</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             PRODUTOS
+        =================================================== -->
+
+        <section class="products-section" id="products">
+
+            <div class="section-header">
+
+                <h2>
+                    <span></span>
+                    PRODUTOS EM <strong>DESTAQUE</strong>
+                </h2>
+
+                <button id="showAllProducts">
+                    Ver todos os produtos
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+
+            <div class="products-grid" id="productsGrid"></div>
+
+
+            <div class="empty-products" id="emptyProducts">
+
+                <i class="fa-solid fa-box-open"></i>
+
+                <h3>Nenhum produto encontrado</h3>
+
+                <p>
+                    Tente pesquisar por outro termo.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             OFERTAS
+        =================================================== -->
+
+        <section class="offer-banner" id="offers">
+
+            <div>
+
+                <span>OFERTAS NOBRETECH</span>
+
+                <h2>
+                    TECNOLOGIA
+                    <strong>COM PREÇO JUSTO</strong>
+                </h2>
+
+                <p>
+                    Encontre componentes para montar seu computador.
+                </p>
+
+            </div>
+
+            <button onclick="filterOffers()">
+                VER OFERTAS
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </section>
+
+
+        <!-- ==================================================
+             DIFERENCIAIS
+        =================================================== -->
+
+        <section class="advantages">
+
+            <div class="advantage">
+
+                <i class="fa-regular fa-star"></i>
+
+                <div>
+                    <strong>AS MELHORES MARCAS</strong>
+                    <span>Principais marcas do mercado</span>
+                </div>
+
+            </div>
+
+
+            <div class="advantage">
+
+                <i class="fa-solid fa-award"></i>
+
+                <div>
+                    <strong>GARANTIA DE QUALIDADE</strong>
+                    <span>Produtos confiáveis</span>
+                </div>
+
+            </div>
+
+
+            <div class="advantage">
+
+                <i class="fa-solid fa-truck"></i>
+
+                <div>
+                    <strong>ENTREGA PARA TODO O BRASIL</strong>
+                    <span>Rastreamento em tempo real</span>
+                </div>
+
+            </div>
+
+
+            <div class="advantage">
+
+                <i class="fa-solid fa-headset"></i>
+
+                <div>
+                    <strong>ATENDIMENTO ESPECIALIZADO</strong>
+                    <span>Tire suas dúvidas conosco</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ======================================================
+         FOOTER
+    ======================================================= -->
+
+    <footer id="contact">
+
+        <div class="footer-container">
+
+            <div class="footer-column">
+
+                <div class="footer-logo">
+                    <div class="logo-n">N</div>
+
+                    <strong>
+                        Nobre<span>Tech</span>
+                    </strong>
+                </div>
+
+                <p>
+                    Tecnologia sem limites.
+                    Um projeto de portfólio desenvolvido
+                    para demonstrar conhecimentos em
+                    desenvolvimento web.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Categorias</h3>
+
+                <button onclick="filterCategory('gpu')">
+                    Placas de vídeo
+                </button>
+
+                <button onclick="filterCategory('cpu')">
+                    Processadores
+                </button>
+
+                <button onclick="filterCategory('ram')">
+                    Memórias RAM
+                </button>
+
+                <button onclick="filterCategory('storage')">
+                    Armazenamento
+                </button>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Atendimento</h3>
+
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    pedrophnobre2000@gmail.com
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    (88) 99950-2994
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Projeto</h3>
+
+                <p>
+                    HTML5
+                </p>
+
+                <p>
+                    CSS3
+                </p>
+
+                <p>
+                    JavaScript
+                </p>
+
+                <p>
+                    GitHub Pages
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 NobreTech — Projeto de portfólio.
+
+        </div>
+
+    </footer>
+
+
+    <!-- ======================================================
+         CARRINHO LATERAL
+    ======================================================= -->
+
+    <aside class="cart-sidebar" id="cartSidebar">
+
+        <div class="cart-header">
+
+            <div>
+                <h2>Meu carrinho</h2>
+
+                <span>
+                    <span id="sidebarCartCount">0</span> produtos
+                </span>
+            </div>
+
+            <button id="closeCart">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <!-- ESSA ÁREA TEM ROLAGEM -->
+        <div class="cart-items" id="cartItems"></div>
+
+
+        <div class="cart-footer">
+
+            <div class="cart-total">
+
+                <span>Total:</span>
+
+                <strong id="cartTotal">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+            <button class="checkout-button" id="checkoutButton">
+
+                FINALIZAR PEDIDO
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+            <button class="continue-button" id="continueShopping">
+                Continuar comprando
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- FUNDO ESCURO DO CARRINHO -->
+    <div class="overlay" id="overlay"></div>
+
+
+    <!-- ======================================================
+         MODAL DE LOGIN
+    ======================================================= -->
+
+    <div class="modal" id="accountModal">
+
+        <div class="modal-box">
+
+            <button class="modal-close" id="closeAccount">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+
+            <div class="modal-title">
+
+                <div class="modal-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <h2 id="accountTitle">
+                    Minha conta
+                </h2>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <form id="loginForm">
+
+                <label>
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="seu@email.com"
+                    required>
+
+
+                <label>
+                    Senha
+                </label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Digite sua senha"
+                    required>
+
+
+                <button type="submit" class="modal-button">
+                    ENTRAR
+                </button>
+
+                <p class="switch-form">
+
+                    Ainda não possui conta?
+
+                    <button type="button" id="showRegister">
+                        Criar conta
+                    </button>
+
+                </p>
+
+            </form>
+
+
+            <!-- CADASTRO -->
+
+            <form id="registerForm" class="hidden">
+
+                <label>
+                    Nome
+                </label>
+
+                <input
+                    type="text"
+                    id="registerName"
+                    placeholder="Seu nome"
+                    required>
+
+
+                <label>
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="seu@email.com"
+                    required>
+
+
+                <label>
+                    Senha
+                </label>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Crie uma senha"
+                    required>
+
+
+                <button type="submit" class="modal-button">
+                    CADASTRAR
+                </button>
+
+
+                <p class="switch-form">
+
+                    Já possui conta?
+
+                    <button type="button" id="showLogin">
+                        Fazer login
+                    </button>
+
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+         JAVASCRIPT
+    ======================================================= -->
+
     <script src="script.js"></script>
+
 </body>
+
 </html>
