@@ -118,7 +118,6 @@ const products = [
     /* =====================================================
        PLACAS DE VIDEO
     ====================================================== */
-   },
     {
       
     id: 11,
@@ -131,7 +130,6 @@ const products = [
     offer: true
     },
 
-    {
        {
         id: 12,
         category: "gpu",
@@ -142,7 +140,7 @@ const products = [
         offer: false
     },
 
-    {
+   
        {
         id: 13,
         category: "gpu",
