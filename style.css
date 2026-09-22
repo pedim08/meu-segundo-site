@@ -1251,3 +1251,42 @@ del {
     .nav-links { display: none; }
     .footer-main { grid-template-columns: 1fr; }
 }
+/* GAVETA DE CADASTRO E AUTENTICAÇÃO */
+.auth-drawer {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 100%;
+    max-width: 380px;
+    height: 100vh;
+    background-color: var(--bg-card, #121214);
+    z-index: 1001;
+    padding: 24px;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+    overflow-y: auto;
+}
+
+.auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Exibe a gaveta quando o checkbox #auth-toggle estiver marcado */
+#auth-toggle:checked ~ .auth-drawer {
+    right: 0;
+}
+
+#auth-toggle:checked ~ .auth-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
