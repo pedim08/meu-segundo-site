@@ -120,7 +120,7 @@ const products = [
     ====================================================== */
 
     {
-      {
+      
     id: 11,
     category: "gpu",
     categoryName: "Placa de Vídeo",
