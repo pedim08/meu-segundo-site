@@ -149,7 +149,7 @@ const products = [
         offer: true
     },
 
-    {
+    
        {
         id: 14,
         category: "gpu",
