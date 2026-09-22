@@ -119,7 +119,6 @@ const products = [
        PLACAS DE VIDEO
     ====================================================== */
     {
-      
     id: 11,
     category: "gpu",
     categoryName: "Placa de Vídeo",
