@@ -1,248 +1,154 @@
-// BANCO DE DADOS LOCAL DE PRODUTOS (Mais de 10 por categoria solicitada)
-const productsData = [
-    // --- PLACAS DE VÍDEO (10 itens) ---
-    { id: 1, category: 'gpu', name: 'Placa de Vídeo Galax GeForce RTX 3060 12GB', price: 1999.90, oldPrice: 2299.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
-    { id: 2, category: 'gpu', name: 'Placa de Vídeo ASUS ROG Strix RTX 4070 Ti 12GB', price: 5899.90, oldPrice: 6499.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'TOP' },
-    { id: 3, category: 'gpu', name: 'Placa de Vídeo Gigabyte AMD Radeon RX 7600 8GB', price: 1699.90, oldPrice: 1899.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'POPULAR' },
-    { id: 4, category: 'gpu', name: 'Placa de Vídeo MSI RTX 4060 Ventus 2X 8GB', price: 2199.90, oldPrice: 2499.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
-    { id: 5, category: 'gpu', name: 'Placa de Vídeo PowerColor RX 6750 XT 12GB', price: 2599.90, oldPrice: 2899.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
-    { id: 6, category: 'gpu', name: 'Placa de Vídeo Zotac RTX 4080 Super 16GB', price: 7499.90, oldPrice: 8199.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'PREMIUM' },
-    { id: 7, category: 'gpu', name: 'Placa de Vídeo ASRock RX 6600 Challenger 8GB', price: 1399.90, oldPrice: 1599.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'CUSTO' },
-    { id: 8, category: 'gpu', name: 'Placa de Vídeo Palit RTX 3050 Dual 8GB', price: 1249.90, oldPrice: 1449.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
-    { id: 9, category: 'gpu', name: 'Placa de Vídeo Gainward RTX 4090 Phantom 24GB', price: 13999.90, oldPrice: 15299.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'MONSTRO' },
-    { id: 10, category: 'gpu', name: 'Placa de Vídeo Sapphire RX 7900 XTX 24GB', price: 6999.90, oldPrice: 7699.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'AMD TOP' },
+// Base de dados de hardware (mínimo 10 produtos de cada categoria)
+const products = [
+    // Placas de Vídeo (gpu)
+    { id: 1, name: "Placa de Vídeo Galax GeForce RTX 3060 12GB GDDR6", category: "gpu", price: 1999.90, oldPrice: 2299.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80" },
+    { id: 2, name: "Placa de Vídeo ASUS ROG Strix RTX 4070 Ti Super 16GB", category: "gpu", price: 5899.90, oldPrice: 6499.90, tag: "NOVO", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80" },
+    { id: 3, name: "Placa de Vídeo MSI Radeon RX 6600 8GB GDDR6", category: "gpu", price: 1399.90, oldPrice: 1599.90, tag: "POPULAR", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80" },
+    { id: 4, name: "Placa de Vídeo Gigabyte RTX 4060 Gaming OC 8GB", category: "gpu", price: 2199.90, oldPrice: 2499.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80" },
+    { id: 5, name: "Placa de Vídeo XFX Radeon RX 7800 XT 16GB GDDR6", category: "gpu", price: 3799.90, oldPrice: 4199.90, tag: "DESTAQUE", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80" },
+    { id: 6, name: "Placa de Vídeo Palit GeForce RTX 3050 6GB GDDR6", category: "gpu", price: 1149.90, oldPrice: 1299.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80" },
+    { id: 7, name: "Placa de Vídeo Zotac RTX 4080 Super Trinity 16GB", category: "gpu", price: 7499.90, oldPrice: 8299.90, tag: "HIGH END", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80" },
+    { id: 8, name: "Placa de Vídeo Sapphire Radeon RX 7600 8GB", category: "gpu", price: 1749.90, oldPrice: 1999.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80" },
+    { id: 9, name: "Placa de Vídeo Gainward RTX 4090 Phantom 24GB", category: "gpu", price: 13999.90, oldPrice: 15499.90, tag: "ULTRA", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80" },
+    { id: 10, name: "Placa de Vídeo PowerColor RX 6750 XT 12GB", category: "gpu", price: 2499.90, oldPrice: 2899.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80" },
 
-    // --- PROCESSADORES (10 itens) ---
-    { id: 11, category: 'cpu', name: 'Processador AMD Ryzen 5 5600 3.5GHz', price: 799.90, oldPrice: 999.90, image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80', tag: 'RECOMENDADO' },
-    { id: 12, category: 'cpu', name: 'Processador Intel Core i5-13400F 2.5GHz', price: 1199.90, oldPrice: 1399.90, image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80', tag: 'INTEL' },
-    { id: 13, category: 'cpu', name: 'Processador AMD Ryzen 7 5800X3D 3.4GHz', price: 2199.90, oldPrice: 2499.90, image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80', tag: 'GAMER' },
-    { id: 14, category: 'cpu', name: 'Processador Intel Core i7-14700K 3.4GHz', price: 2899.90, oldPrice: 3299.90, image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80', tag: 'NOVO' },
-    { id: 15, category: 'cpu', name: 'Processador AMD Ryzen 7 7800X3D 4.2GHz', price: 2799.90, oldPrice: 3199.90, image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80', tag: 'BEST CPU' },
-    { id: 16, category: 'cpu', name: 'Processador Intel Core i9-14900K 3.2GHz', price: 4199.90, oldPrice: 4699.90, image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80', tag: 'TOP' },
-    { id: 17, category: 'cpu', name: 'Processador AMD Ryzen 5 7600 3.8GHz', price: 1399.90, oldPrice: 1599.90, image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80', tag: 'AM5' },
-    { id: 18, category: 'cpu', name: 'Processador Intel Core i3-12100F 3.3GHz', price: 549.90, oldPrice: 649.90, image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80', tag: 'ENTRADA' },
-    { id: 19, category: 'cpu', name: 'Processador AMD Ryzen 9 7950X 4.5GHz', price: 3899.90, oldPrice: 4399.90, image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80', tag: 'PRO' },
-    { id: 20, category: 'cpu', name: 'Processador Intel Core i5-14600KF 3.5GHz', price: 1899.90, oldPrice: 2199.90, image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
+    // Processadores (cpu)
+    { id: 11, name: "Processador AMD Ryzen 5 5600 3.5GHz (4.4GHz Turbo)", category: "cpu", price: 799.90, oldPrice: 999.90, tag: "BEST SELLER", image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80" },
+    { id: 12, name: "Processador Intel Core i5-12400F 2.5GHz (4.4GHz Turbo)", category: "cpu", price: 849.90, oldPrice: 1049.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80" },
+    { id: 13, name: "Processador AMD Ryzen 7 5700X3D 3.0GHz (4.1GHz Turbo)", category: "cpu", price: 1399.90, oldPrice: 1699.90, tag: "GAMING", image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80" },
+    { id: 14, name: "Processador Intel Core i7-13700KF 3.4GHz (5.4GHz Turbo)", category: "cpu", price: 2399.90, oldPrice: 2799.90, tag: "NOVO", image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80" },
+    { id: 15, name: "Processador AMD Ryzen 7 7800X3D 4.2GHz (5.0GHz Turbo)", category: "cpu", price: 2899.90, oldPrice: 3299.90, tag: "TOP GAMER", image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80" },
+    { id: 16, name: "Processador Intel Core i3-12100F 3.3GHz (4.3GHz Turbo)", category: "cpu", price: 549.90, oldPrice: 699.90, tag: "ENTRADA", image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80" },
+    { id: 17, name: "Processador AMD Ryzen 5 8600G 4.3GHz (5.0GHz Turbo)", category: "cpu", price: 1299.90, oldPrice: 1499.90, tag: "COM VEGA", image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80" },
+    { id: 18, name: "Processador Intel Core i9-14900K 3.2GHz (6.0GHz Turbo)", category: "cpu", price: 3999.90, oldPrice: 4499.90, tag: "ULTRA", image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80" },
+    { id: 19, name: "Processador AMD Ryzen 9 7950X3D 4.2GHz (5.7GHz)", category: "cpu", price: 4299.90, oldPrice: 4899.90, tag: "WORKSTATION", image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80" },
+    { id: 20, name: "Processador Intel Core i5-14600KF 3.5GHz (5.3GHz)", category: "cpu", price: 1899.90, oldPrice: 2199.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80" },
 
-    // --- PLACAS MÃE (10 itens) ---
-    { id: 21, category: 'motherboard', name: 'Placa Mãe ASUS TUF Gaming B450M-Plus II', price: 699.90, oldPrice: 799.90, image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80', tag: 'POPULAR' },
-    { id: 22, category: 'motherboard', name: 'Placa Mãe Gigabyte B650M AORUS Elite AX', price: 1399.90, oldPrice: 1599.90, image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80', tag: 'AM5' },
-    { id: 23, category: 'motherboard', name: 'Placa Mãe MSI MAG B760M Mortar WiFi', price: 1299.90, oldPrice: 1499.90, image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80', tag: 'INTEL' },
-    { id: 24, category: 'motherboard', name: 'Placa Mãe ASRock B550M Steel Legend', price: 899.90, oldPrice: 1049.90, image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80', tag: 'TOP VENDA' },
-    { id: 25, category: 'motherboard', name: 'Placa Mãe ASUS ROG Strix Z790-F Gaming', price: 2899.90, oldPrice: 3299.90, image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80', tag: 'PREMIUM' },
-    { id: 26, category: 'motherboard', name: 'Placa Mãe Gigabyte A520M S2H', price: 439.90, oldPrice: 519.90, image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80', tag: 'ENTRADA' },
-    { id: 27, category: 'motherboard', name: 'Placa Mãe MSI PRO H610M-G DDR4', price: 499.90, oldPrice: 589.90, image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80', tag: 'INTEL' },
-    { id: 28, category: 'motherboard', name: 'Placa Mãe ASUS Prime X670-P WiFi', price: 1899.90, oldPrice: 2199.90, image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80', tag: 'AM5 PRO' },
-    { id: 29, category: 'motherboard', name: 'Placa Mãe Biostar B550MH', price: 479.90, oldPrice: 559.90, image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
-    { id: 30, category: 'motherboard', name: 'Placa Mãe ASRock Z690 PG Riptide', price: 1499.90, oldPrice: 1749.90, image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
+    // Memórias RAM (ram)
+    { id: 21, name: "Memória Corsair Vengeance LPX 16GB (2x8GB) DDR4 3200MHz", category: "ram", price: 299.90, oldPrice: 389.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80" },
+    { id: 22, name: "Memória Kingston Fury Beast 16GB DDR4 3200MHz RGB", category: "ram", price: 239.90, oldPrice: 289.90, tag: "RGB", image: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80" },
+    { id: 23, name: "Memória XPG Spectrix D35G 32GB (2x16GB) DDR4 3200MHz", category: "ram", price: 549.90, oldPrice: 649.90, tag: "KIT 32GB", image: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80" },
+    { id: 24, name: "Memória Corsair Vengeance RGB 32GB (2x16GB) DDR5 6000MHz", category: "ram", price: 899.90, oldPrice: 1099.90, tag: "DDR5", image: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80" },
+    { id: 25, name: "Memória Kingston Fury Renegade 16GB DDR5 6400MHz", category: "ram", price: 499.90, oldPrice: 599.90, tag: "DDR5", image: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80" },
+    { id: 26, name: "Memória GeIL Super Luce RGB 8GB DDR4 3000MHz", category: "ram", price: 129.90, oldPrice: 169.90, tag: "ENTRADA", image: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80" },
+    { id: 27, name: "Memória Team Group T-Force Delta RGB 32GB DDR5 5600MHz", category: "ram", price: 799.90, oldPrice: 929.90, tag: "DDR5", image: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80" },
+    { id: 28, name: "Memória Asgard Valkyrie V2 32GB (2x16GB) DDR4 3600MHz", category: "ram", price: 599.90, oldPrice: 699.90, tag: "PREMIUM", image: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80" },
+    { id: 29, name: "Memória Lexar Thor 16GB (2x8GB) DDR4 3200MHz", category: "ram", price: 269.90, oldPrice: 319.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80" },
+    { id: 30, name: "Memória G.Skill Trident Z5 RGB 64GB (2x32GB) DDR5 6000MHz", category: "ram", price: 1899.90, oldPrice: 2199.90, tag: "ULTRA 64GB", image: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80" },
 
-    // --- MEMÓRIAS RAM (10 itens) ---
-    { id: 31, category: 'ram', name: 'Memória Corsair Vengeance LPX 16GB (2x8GB) DDR4 3200MHz', price: 299.90, oldPrice: 359.90, image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80', tag: 'KIT' },
-    { id: 32, category: 'ram', name: 'Memória Kingston Fury Beast 32GB (2x16GB) DDR5 6000MHz', price: 899.90, oldPrice: 1099.90, image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80', tag: 'DDR5' },
-    { id: 33, category: 'ram', name: 'Memória XPG Spectrix D50 RGB 16GB DDR4 3600MHz', price: 249.90, oldPrice: 299.90, image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80', tag: 'RGB' },
-    { id: 34, category: 'ram', name: 'Memória G.Skill Trident Z5 RGB 32GB (2x16) DDR5 6400MHz', price: 1199.90, oldPrice: 1399.90, image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80', tag: 'TOP' },
-    { id: 35, category: 'ram', name: 'Memória GeIL Super Luce 8GB DDR4 3000MHz', price: 129.90, oldPrice: 159.90, image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80', tag: 'CUSTO' },
-    { id: 36, category: 'ram', name: 'Memória Team Group T-Force Delta RGB 16GB DDR4 3200MHz', price: 239.90, oldPrice: 279.90, image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80', tag: 'RGB' },
-    { id: 37, category: 'ram', name: 'Memória Corsair Dominator Platinum RGB 32GB DDR5 5600MHz', price: 1299.90, oldPrice: 1499.90, image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80', tag: 'PREMIUM' },
-    { id: 38, category: 'ram', name: 'Memória Kingston Fury Renegade 16GB DDR5 6000MHz', price: 479.90, oldPrice: 549.90, image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80', tag: 'FAST' },
-    { id: 39, category: 'ram', name: 'Memória Crucial 8GB DDR4 2666MHz', price: 109.90, oldPrice: 139.90, image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80', tag: 'BÁSICO' },
-    { id: 40, category: 'ram', name: 'Memória ADATA Premier 16GB DDR4 3200MHz', price: 209.90, oldPrice: 249.90, image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
+    // Armazenamento (storage)
+    { id: 31, name: "SSD Kingston NV2 1TB NVMe M.2 2280 (Leitura 3500MB/s)", category: "storage", price: 449.90, oldPrice: 529.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80" },
+    { id: 32, name: "SSD Samsung 990 Pro 2TB NVMe M.2 (Leitura 7450MB/s)", category: "storage", price: 1299.90, oldPrice: 1499.90, tag: "TOP PERFORMANCE", image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80" },
+    { id: 33, name: "SSD WD Black SN850X 1TB NVMe M.2 (Leitura 7300MB/s)", category: "storage", price: 749.90, oldPrice: 899.90, tag: "GAMING", image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80" },
+    { id: 34, name: "SSD Lexar NM620 512GB NVMe M.2 2280", category: "storage", price: 249.90, oldPrice: 299.90, tag: "CUSTO BENEFÍCIO", image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80" },
+    { id: 35, name: "SSD Crucial P3 Plus 2TB NVMe PCIe 4.0 M.2", category: "storage", price: 899.90, oldPrice: 1049.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80" },
+    { id: 36, name: "SSD ADATA XPG S70 Blade 1TB NVMe M.2", category: "storage", price: 599.90, oldPrice: 699.90, tag: "PS5 COMPATÍVEL", image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80" },
+    { id: 37, name: "SSD SanDisk Plus 480GB Sata III 2.5", category: "storage", price: 199.90, oldPrice: 249.90, tag: "SATA", image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80" },
+    { id: 38, name: "HD Seagate BarraCuda 2TB 3.5 Sata III 7200RPM", category: "storage", price: 389.90, oldPrice: 449.90, tag: "HD SEAGATE", image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80" },
+    { id: 39, name: "SSD Kingston XS2000 1TB Portátil USB 3.2", category: "storage", price: 849.90, oldPrice: 999.90, tag: "EXTERNO", image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80" },
+    { id: 40, name: "SSD Corsair MP600 PRO LPX 4TB NVMe M.2", category: "storage", price: 2799.90, oldPrice: 3199.90, tag: "ULTRA 4TB", image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80" },
 
-    // --- ARMAZENAMENTO (10 itens) ---
-    { id: 41, category: 'storage', name: 'SSD Kingston NV2 1TB NVMe M.2 2280', price: 449.90, oldPrice: 519.90, image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80', tag: 'BEST SELLER' },
-    { id: 42, category: 'storage', name: 'SSD Samsung 990 Pro 2TB NVMe M.2 Gen4', price: 1299.90, oldPrice: 1499.90, image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80', tag: 'VELOZ' },
-    { id: 43, category: 'storage', name: 'SSD WD Black SN850X 1TB M.2 Gen4 com Dissipador', price: 749.90, oldPrice: 859.90, image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80', tag: 'PRO' },
-    { id: 44, category: 'storage', name: 'SSD XPG S20G RGB 512GB NVMe M.2', price: 279.90, oldPrice: 329.90, image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80', tag: 'RGB' },
-    { id: 45, category: 'storage', name: 'SSD Crucial BX500 480GB SATA III 2.5', price: 219.90, oldPrice: 259.90, image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80', tag: 'SATA' },
-    { id: 46, category: 'storage', name: 'HD Seagate BarraCuda 2TB 3.5 SATA III', price: 389.90, oldPrice: 439.90, image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80', tag: 'HD' },
-    { id: 47, category: 'storage', name: 'SSD Lexar NM620 512GB M.2 2280', price: 239.90, oldPrice: 289.90, image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
-    { id: 48, category: 'storage', name: 'SSD Adata Legend 800 1TB PCIe Gen4', price: 429.90, oldPrice: 499.90, image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80', tag: 'GEN4' },
-    { id: 49, category: 'storage', name: 'SSD Corsair MP600 PRO 2TB M.2 Gen4', price: 1399.90, oldPrice: 1599.90, image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80', tag: 'EXTREMO' },
-    { id: 50, category: 'storage', name: 'HD Western Digital Blue 1TB 3.5 SATA', price: 289.90, oldPrice: 329.90, image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80', tag: 'WD' },
-
-    // --- FONTES (10 itens) ---
-    { id: 51, category: 'psu', name: 'Fonte Corsair CV650 650W 80 Plus Bronze', price: 399.90, oldPrice: 469.90, image: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80', tag: 'POPULAR' },
-    { id: 52, category: 'psu', name: 'Fonte MSI MAG A650BN 650W 80 Plus Bronze', price: 329.90, oldPrice: 389.90, image: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80', tag: 'CUSTO' },
-    { id: 53, category: 'psu', name: 'Fonte XPG Pylon 750W 80 Plus Bronze', price: 449.90, oldPrice: 519.90, image: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
-    { id: 54, category: 'psu', name: 'Fonte ASUS ROG Thor 850W Platinum II OLED', price: 1899.90, oldPrice: 2199.90, image: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80', tag: 'PREMIUM' },
-    { id: 55, category: 'psu', name: 'Fonte Gigabyte P550B 550W 80 Plus Bronze', price: 279.90, oldPrice: 329.90, image: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80', tag: 'ENTRADA' },
-    { id: 56, category: 'psu', name: 'Fonte Corsair RM850x 850W 80 Plus Gold Modular', price: 899.90, oldPrice: 1049.90, image: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80', tag: 'GOLD' },
-    { id: 57, category: 'psu', name: 'Fonte EVGA 600W 80 Plus White', price: 299.90, oldPrice: 349.90, image: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
-    { id: 58, category: 'psu', name: 'Fonte ThermalTake Toughpower 1000W Gold', price: 1199.90, oldPrice: 1399.90, image: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80', tag: 'POWER' },
-    { id: 59, category: 'psu', name: 'Fonte Super Flower Legion GX Pro 750W Gold', price: 599.90, oldPrice: 689.90, image: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80', tag: 'TOP' },
-    { id: 60, category: 'psu', name: 'Fonte Cooler Master MWE 500W V2 Bronze', price: 269.90, oldPrice: 309.90, image: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80', tag: 'BÁSICO' },
-
-    // --- GABINETES (10 itens) ---
-    { id: 61, category: 'case', name: 'Gabinete Gamer Rise Mode Galaxy Glass Aquário Black', price: 349.90, oldPrice: 429.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'AQUÁRIO' },
-    { id: 62, category: 'case', name: 'Gabinete Lian Li O11 Dynamic EVO RGB Black', price: 1299.90, oldPrice: 1499.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'PREMIUM' },
-    { id: 63, category: 'case', name: 'Gabinete Montech Air 903 Max ARGB Black', price: 419.90, oldPrice: 489.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'AIRFLOW' },
-    { id: 64, category: 'case', name: 'Gabinete Corsair 4000D Airflow Mid-Tower White', price: 629.90, oldPrice: 719.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'TOP' },
-    { id: 65, category: 'case', name: 'Gabinete Pichau HX600 Glass Mesh', price: 289.90, oldPrice: 349.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
-    { id: 66, category: 'case', name: 'Gabinete NZXT H9 Flow Dual-Chamber Mid-Tower', price: 1149.90, oldPrice: 1299.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'HIGH END' },
-    { id: 67, category: 'case', name: 'Gabinete Cougar Archon 2 Mesh RGB', price: 259.90, oldPrice: 299.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'RGB' },
-    { id: 68, category: 'case', name: 'Gabinete DeepCool CC560 V2 com 4 Fans', price: 329.90, oldPrice: 389.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: '4 FANS' },
-    { id: 69, category: 'case', name: 'Gabinete Thermaltake Tower 150 Mini-ITX', price: 549.90, oldPrice: 629.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'MINI' },
-    { id: 70, category: 'case', name: 'Gabinete Redragon Grapple RGB Mid Tower', price: 299.90, oldPrice: 349.90, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
-
-    // --- MONITORES (10 itens) ---
-    { id: 71, category: 'monitor', name: 'Monitor Gamer LG UltraGear 27" Full HD 144Hz 1ms IPS', price: 1199.90, oldPrice: 1399.90, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80', tag: 'BEST SELLER' },
-    { id: 72, category: 'monitor', name: 'Monitor Gamer Samsung Odyssey G5 34" QHD Ultrawide 165Hz', price: 2899.90, oldPrice: 3299.90, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80', tag: 'CURVO' },
-    { id: 73, category: 'monitor', name: 'Monitor Gamer AOC Hero 24" 165Hz 1ms IPS', price: 899.90, oldPrice: 1049.90, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
-    { id: 74, category: 'monitor', name: 'Monitor ASUS ROG Swift 27" OLED 240Hz 0.03ms', price: 6499.90, oldPrice: 7199.90, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80', tag: 'OLED 240Hz' },
-    { id: 75, category: 'monitor', name: 'Monitor Gamer Mancer Valak 180Hz 1ms Curved 24"', price: 699.90, oldPrice: 829.90, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80', tag: 'CUSTO' },
-    { id: 76, category: 'monitor', name: 'Monitor Dell P2722H 27" Full HD Ergoclean', price: 1249.90, oldPrice: 1449.90, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80', tag: 'OFFICE' },
-    { id: 77, category: 'monitor', name: 'Monitor Gigabyte M27Q 27" QHD 170Hz IPS KVM', price: 2199.90, oldPrice: 2499.90, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80', tag: 'QHD 144P' },
-    { id: 78, category: 'monitor', name: 'Monitor Philips 22" Full HD 75Hz VA HDMI', price: 479.90, oldPrice: 559.90, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80', tag: 'BÁSICO' },
-    { id: 79, category: 'monitor', name: 'Monitor Zinnia 23.8" IPS 75Hz Full HD', price: 499.90, oldPrice: 589.90, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80', tag: 'OFERTA' },
-    { id: 80, category: 'monitor', name: 'Monitor Gamer Alienware 24.5" 360Hz Fast IPS', price: 3799.90, oldPrice: 4299.90, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80', tag: 'ESPORTS' },
-
-    // --- PERIFÉRICOS (10 itens) ---
-    { id: 81, category: 'peripherals', name: 'Teclado Mecânico Gamer Redragon Kumara RGB Switch Blue', price: 229.90, oldPrice: 279.90, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&q=80', tag: 'MECÂNICO' },
-    { id: 82, category: 'peripherals', name: 'Mouse Gamer Logitech G Pro X Superlight Wireless White', price: 699.90, oldPrice: 829.90, image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=400&q=80', tag: 'PRO' },
-    { id: 83, category: 'peripherals', name: 'Headset Gamer HyperX Cloud II 7.1 Red', price: 499.90, oldPrice: 589.90, image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=80', tag: 'LENDÁRIO' },
-    { id: 84, category: 'peripherals', name: 'Mousepad Gamer Extra Grande 900x400mm Speed Black', price: 79.90, oldPrice: 99.90, image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=400&q=80', tag: 'XL' },
-    { id: 85, category: 'peripherals', name: 'Teclado Mecânico Corsair K70 RGB PRO Cherry MX', price: 999.90, oldPrice: 1199.90, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&q=80', tag: 'TOP' },
-    { id: 86, category: 'peripherals', name: 'Headset Gamer Razer BlackShark V2 X', price: 299.90, oldPrice: 349.90, image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=80', tag: 'RAZER' },
-    { id: 87, category: 'peripherals', name: 'Mouse Gamer Redragon Cobra Chroma 10000 DPI', price: 119.90, oldPrice: 149.90, image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=400&q=80', tag: 'BEST SELLER' },
-    { id: 88, category: 'peripherals', name: 'Microfone Condensador Fifine AmpliGame A6V RGB', price: 199.90, oldPrice: 249.90, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&q=80', tag: 'STREAMER' },
-    { id: 89, category: 'peripherals', name: 'Cadeira Gamer Mancer Tyr T3 Preto/Vermelho', price: 649.90, oldPrice: 759.90, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&q=80', tag: 'CONFORTO' },
-    { id: 90, category: 'peripherals', name: 'Webcam Logitech C920s Full HD 1080p', price: 379.90, oldPrice: 439.90, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&q=80', tag: 'FULL HD' }
+    // Placas Mãe (mobo)
+    { id: 41, name: "Placa Mãe ASUS TUF Gaming B450M-Plus II AMD AM4", category: "mobo", price: 699.90, oldPrice: 829.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" },
+    { id: 42, name: "Placa Mãe MSI B550M Pro-VDH WiFi AMD AM4", category: "mobo", price: 749.90, oldPrice: 899.90, tag: "WIFI INCLUSO", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" },
+    { id: 43, name: "Placa Mãe Gigabyte B760M AORUS Elite Intel LGA 1700 DDR5", category: "mobo", price: 1199.90, oldPrice: 1399.90, tag: "DDR5", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" },
+    { id: 44, name: "Placa Mãe ASRock B650M HDV/M.2 AMD AM5 DDR5", category: "mobo", price: 899.90, oldPrice: 1049.90, tag: "AM5 DDR5", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" },
+    { id: 45, name: "Placa Mãe ASUS ROG Strix Z790-E Gaming WiFi Intel", category: "mobo", price: 3499.90, oldPrice: 3899.90, tag: "PREMIUM", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" },
+    { id: 46, name: "Placa Mãe Gigabyte A520M K V2 AMD AM4", category: "mobo", price: 389.90, oldPrice: 459.90, tag: "ENTRADA", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" },
+    { id: 47, name: "Placa Mãe Biostar H610M-E Intel LGA 1700", category: "mobo", price: 429.90, oldPrice: 499.90, tag: "ENTRADA", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" },
+    { id: 48, name: "Placa Mãe MSI MAG B650 Tomahawk WiFi AM5", category: "mobo", price: 1699.90, oldPrice: 1899.90, tag: "AM5 TOP", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" },
+    { id: 49, name: "Placa Mãe ASRock Z690 Steel Legend Intel DDR4", category: "mobo", price: 1399.90, oldPrice: 1599.90, tag: "OFERTA", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" },
+    { id: 50, name: "Placa Mãe ASUS Prime X670E-Pro WiFi AMD AM5", category: "mobo", price: 2499.90, oldPrice: 2799.90, tag: "X670E", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" }
 ];
 
-// LISTA DE CATEGORIAS DA BARRA SUPERIOR
-const categoriesData = [
-    { name: 'Placas de Vídeo', icon: 'fa-solid fa-microchip', key: 'gpu' },
-    { name: 'Processadores', icon: 'fa-solid fa-memory', key: 'cpu' },
-    { name: 'Placas Mãe', icon: 'fa-solid fa-chess-board', key: 'motherboard' },
-    { name: 'Memórias RAM', icon: 'fa-solid fa-server', key: 'ram' },
-    { name: 'Armazenamento', icon: 'fa-solid fa-hard-drive', key: 'storage' },
-    { name: 'Fontes', icon: 'fa-solid fa-plug', key: 'psu' },
-    { name: 'Gabinetes', icon: 'fa-solid fa-box', key: 'case' },
-    { name: 'Monitores', icon: 'fa-solid fa-desktop', key: 'monitor' },
-    { name: 'Periféricos', icon: 'fa-solid fa-keyboard', key: 'peripherals' }
-];
-
-// ESTADO DO CARRINHO DE COMPRAS
+// Estado da Aplicação
 let cart = [];
-let activeCategory = 'todos';
+let currentCategory = 'all';
+let isRegisterMode = false;
+let userLoggedIn = null;
 
-// CARREGAR ELEMENTOS DO DOM
+// Inicialização DOM
 document.addEventListener('DOMContentLoaded', () => {
-    renderCategories();
-    renderProducts();
-    setupCartControls();
+    renderProducts(products);
     setupSearch();
-    setupFilters();
-    setupAuth();
 });
 
-// 1. RENDERIZAR CATEGORIAS EM DESTAQUE
-function renderCategories() {
-    const container = document.getElementById('categoryContainer');
-    container.innerHTML = categoriesData.map(cat => `
-        <div class="category-card" onclick="filterByCategory('${cat.key}')">
-            <i class="${cat.icon}"></i>
-            <span>${cat.name}</span>
-        </div>
-    `).join('');
-}
+// Renderizar lista de produtos
+function renderProducts(items) {
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = '';
 
-// 2. RENDERIZAR QUADRO DE PRODUTOS
-function renderProducts(itemsToRender = productsData) {
-    const grid = document.getElementById('productGrid');
-    
-    if (itemsToRender.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">Nenhum produto encontrado.</div>`;
+    if(items.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-gray);">
+            <i class="fa-solid fa-box-open" style="font-size: 48px; margin-bottom: 12px;"></i>
+            <p>Nenhum produto encontrado.</p>
+        </div>`;
         return;
     }
 
-    grid.innerHTML = itemsToRender.map(prod => `
-        <div class="product-card">
-            ${prod.tag ? `<span class="badge-offer">${prod.tag}</span>` : ''}
-            <button class="wishlist-btn" title="Adicionar aos Favoritos"><i class="fa-regular fa-heart"></i></button>
-            <img class="product-image" src="${prod.image}" alt="${prod.name}">
-            <div class="product-title">${prod.name}</div>
-            <div class="price-old">De: R$ ${prod.oldPrice.toFixed(2).replace('.', ',')}</div>
-            <div class="price-current">R$ ${prod.price.toFixed(2).replace('.', ',')}</div>
-            <div class="price-pix">À vista no PIX (15% OFF)</div>
-            <button class="btn-add-cart" onclick="addToCart(${prod.id})">
-                <i class="fa-solid fa-cart-plus"></i> Adicionar ao carrinho
+    items.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <span class="product-tag">${product.tag}</span>
+            <button class="fav-btn" onclick="toggleFavorite(this)"><i class="fa-regular fa-heart"></i></button>
+            <img class="product-img" src="${product.image}" alt="${product.name}">
+            <h3 class="product-title">${product.name}</h3>
+            <span class="old-price">R$ ${product.oldPrice.toFixed(2).replace('.', ',')}</span>
+            <div class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
+            <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
+                <i class="fa-solid fa-cart-shopping"></i> Adicionar ao carrinho
             </button>
-        </div>
-    `).join('');
-}
-
-// 3. FILTRAGEM POR CATEGORIA E ABAS
-function setupFilters() {
-    const pills = document.querySelectorAll('.pill');
-    pills.forEach(pill => {
-        pill.addEventListener('click', (e) => {
-            pills.forEach(p => p.classList.remove('active'));
-            e.target.classList.add('active');
-            const cat = e.target.getAttribute('data-category');
-            filterByCategory(cat);
-        });
+        `;
+        grid.appendChild(card);
     });
 }
 
-function filterByCategory(categoryKey) {
-    activeCategory = categoryKey;
-    
-    // Sincronizar pills
-    const pills = document.querySelectorAll('.pill');
-    pills.forEach(p => {
-        if(p.getAttribute('data-category') === categoryKey) {
-            p.classList.add('active');
-        } else {
-            p.classList.remove('active');
-        }
-    });
+// Filtro por Categoria
+function filterByCategory(category, element = null) {
+    currentCategory = category;
 
-    if (categoryKey === 'todos') {
-        renderProducts(productsData);
+    // Ajustar classe ativa nos botões
+    if(element) {
+        document.querySelectorAll('.cat-card').forEach(el => el.classList.remove('active'));
+        element.classList.add('active');
+    }
+
+    if(category === 'all') {
+        renderProducts(products);
     } else {
-        const filtered = productsData.filter(p => p.category === categoryKey);
+        const filtered = products.filter(p => p.category === category);
         renderProducts(filtered);
     }
 }
 
-// 4. PESQUISA EM TEMPO REAL
+// Filtro por Busca Dinâmica
 function setupSearch() {
-    const input = document.getElementById('searchInput');
-    input.addEventListener('input', (e) => {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase().trim();
-        const filtered = productsData.filter(p => 
-            p.name.toLowerCase().includes(query) || 
-            p.category.toLowerCase().includes(query)
-        );
+        const filtered = products.filter(product => {
+            const matchesSearch = product.name.toLowerCase().includes(query);
+            const matchesCategory = currentCategory === 'all' || product.category === currentCategory;
+            return matchesSearch && matchesCategory;
+        });
         renderProducts(filtered);
     });
 }
 
-// 5. FUNÇÕES DO CARRINHO DE COMPRAS
+// Gestão do Carrinho de Compras
 function addToCart(productId) {
-    const product = productsData.find(p => p.id === productId);
-    const existingIndex = cart.findIndex(item => item.id === productId);
+    const product = products.find(p => p.id === productId);
+    const existingItem = cart.find(item => item.id === productId);
 
-    if (existingIndex > -1) {
-        cart[existingIndex].qty += 1;
+    if (existingItem) {
+        existingItem.quantity += 1;
     } else {
-        cart.push({ ...product, qty: 1 });
+        cart.push({ ...product, quantity: 1 });
     }
 
     updateCartUI();
     openCart();
-}
-
-function updateCartQuantity(productId, change) {
-    const itemIndex = cart.findIndex(item => item.id === productId);
-    if (itemIndex > -1) {
-        cart[itemIndex].qty += change;
-        if (cart[itemIndex].qty <= 0) {
-            cart.splice(itemIndex, 1);
-        }
-    }
-    updateCartUI();
 }
 
 function removeFromCart(productId) {
@@ -250,129 +156,136 @@ function removeFromCart(productId) {
     updateCartUI();
 }
 
-function clearCart() {
-    cart = [];
-    updateCartUI();
+function updateQuantity(productId, change) {
+    const item = cart.find(i => i.id === productId);
+    if(item) {
+        item.quantity += change;
+        if(item.quantity <= 0) {
+            removeFromCart(productId);
+        } else {
+            updateCartUI();
+        }
+    }
 }
 
 function updateCartUI() {
-    const container = document.getElementById('cartItemsContainer');
-    const badge = document.getElementById('cartBadge');
-    const totalPixElem = document.getElementById('cartTotalPix');
-    const totalCardElem = document.getElementById('cartTotalCard');
+    const cartItemsContainer = document.getElementById('cartItemsContainer');
+    const cartCount = document.getElementById('cartCount');
+    const cartTotalValue = document.getElementById('cartTotalValue');
 
-    // Total Contagem
-    const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
-    badge.innerText = totalQty;
+    cartItemsContainer.innerHTML = '';
+    
+    let total = 0;
+    let itemCount = 0;
 
     if (cart.length === 0) {
-        container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 40px 0;">Seu carrinho está vazio.</div>`;
-        totalPixElem.innerText = 'R$ 0,00';
-        totalCardElem.innerText = 'R$ 0,00';
-        return;
+        cartItemsContainer.innerHTML = `<div style="text-align: center; color: var(--text-gray); margin-top: 40px;">
+            <i class="fa-solid fa-cart-flatbed" style="font-size: 40px; margin-bottom: 10px;"></i>
+            <p>Seu carrinho está vazio</p>
+        </div>`;
+    } else {
+        cart.forEach(item => {
+            total += item.price * item.quantity;
+            itemCount += item.quantity;
+
+            const itemEl = document.createElement('div');
+            itemEl.className = 'cart-item';
+            itemEl.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <div class="cart-item-info">
+                    <div class="cart-item-title">${item.name}</div>
+                    <div class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+                    <div class="cart-item-qty">
+                        <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                    </div>
+                </div>
+                <i class="fa-solid fa-trash cart-item-remove" onclick="removeFromCart(${item.id})"></i>
+            `;
+            cartItemsContainer.appendChild(itemEl);
+        });
     }
 
-    // Renderizar itens com rolagem na barra lateral
-    container.innerHTML = cart.map(item => `
-        <div class="cart-item">
-            <img src="${item.image}" alt="${item.name}">
-            <div class="cart-item-details">
-                <div class="cart-item-title">${item.name}</div>
-                <div class="cart-item-price">R$ ${(item.price * item.qty).toFixed(2).replace('.', ',')}</div>
-                <div class="cart-controls">
-                    <button class="qty-btn" onclick="updateCartQuantity(${item.id}, -1)">-</button>
-                    <span>${item.qty}</span>
-                    <button class="qty-btn" onclick="updateCartQuantity(${item.id}, 1)">+</button>
-                    <button style="background:none; border:none; color:#ef4444; margin-left:auto; cursor:pointer;" onclick="removeFromCart(${item.id})">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    `).join('');
-
-    // Calcular valores totais
-    const totalPix = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-    const totalCard = totalPix * 1.10; // Sem desconto
-
-    totalPixElem.innerText = `R$ ${totalPix.toFixed(2).replace('.', ',')}`;
-    totalCardElem.innerText = `R$ ${totalCard.toFixed(2).replace('.', ',')}`;
+    cartCount.textContent = itemCount;
+    cartTotalValue.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
 }
 
-// 6. CONTROLE DE ABERTURA E FECHAMENTO DO DRAWER DO CARRINHO
-function setupCartControls() {
-    const toggleBtn = document.getElementById('cartToggleBtn');
-    const closeBtn = document.getElementById('closeCartBtn');
+// Abrir e Fechar Carrinho Lateral
+function toggleCart() {
+    const drawer = document.getElementById('cartDrawer');
     const overlay = document.getElementById('cartOverlay');
-
-    toggleBtn.addEventListener('click', openCart);
-    closeBtn.addEventListener('click', closeCart);
-    overlay.addEventListener('click', closeCart);
+    drawer.classList.toggle('active');
+    overlay.classList.toggle('active');
 }
 
 function openCart() {
-    document.getElementById('cartDrawer').classList.add('open');
+    document.getElementById('cartDrawer').classList.add('active');
     document.getElementById('cartOverlay').classList.add('active');
-}
-
-function closeCart() {
-    document.getElementById('cartDrawer').classList.remove('open');
-    document.getElementById('cartOverlay').classList.remove('active');
 }
 
 function checkout() {
     if(cart.length === 0) {
-        alert("Adicione produtos ao seu carrinho primeiro!");
+        alert("Adicione pelo menos um produto ao carrinho para finalizar a compra.");
         return;
     }
-    alert("Pedido finalizado com sucesso! Esta é uma demonstração do portfólio.");
-    clearCart();
-    closeCart();
+    alert("Obrigado por testar o protótipo NobreTech! Pedido finalizado com sucesso.");
+    cart = [];
+    updateCartUI();
+    toggleCart();
 }
 
-// 7. MODAL DE LOGIN / CADASTRO DA CONTA
-function setupAuth() {
-    const openBtn = document.getElementById('openAuthBtn');
-    const closeBtn = document.getElementById('closeAuthBtn');
-    const overlay = document.getElementById('authOverlay');
-    const loginTabBtn = document.getElementById('loginTabBtn');
-    const registerTabBtn = document.getElementById('registerTabBtn');
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
+// Favoritos (Visual)
+function toggleFavorite(btn) {
+    const icon = btn.querySelector('i');
+    if(icon.classList.contains('fa-regular')) {
+        icon.classList.remove('fa-regular');
+        icon.classList.add('fa-solid');
+        icon.style.color = '#FF6600';
+    } else {
+        icon.classList.remove('fa-solid');
+        icon.classList.add('fa-regular');
+        icon.style.color = 'var(--text-gray)';
+    }
+}
 
-    openBtn.addEventListener('click', () => overlay.classList.add('active'));
-    closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
+// Modal de Autenticação (Login / Cadastro)
+function openAuthModal() {
+    document.getElementById('authModal').classList.add('active');
+}
 
-    loginTabBtn.addEventListener('click', () => {
-        loginTabBtn.classList.add('active');
-        registerTabBtn.classList.remove('active');
-        loginForm.classList.add('active');
-        registerForm.classList.remove('active');
-    });
+function closeAuthModal() {
+    document.getElementById('authModal').classList.remove('active');
+}
 
-    registerTabBtn.addEventListener('click', () => {
-        registerTabBtn.classList.add('active');
-        loginTabBtn.classList.remove('active');
-        registerForm.classList.add('active');
-        loginForm.classList.remove('active');
-    });
+function toggleAuthMode() {
+    isRegisterMode = !isRegisterMode;
+    const title = document.getElementById('modalTitle');
+    const submitBtn = document.getElementById('authSubmitBtn');
+    const toggleText = document.getElementById('toggleText');
+    const toggleBtn = document.getElementById('toggleBtn');
 
-    // Submissão dos Formulários
-    loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = document.getElementById('loginEmail').value;
-        document.getElementById('userNameDisplay').innerText = "Olá, Cliente";
-        document.getElementById('userSubDisplay').innerText = email;
-        overlay.classList.remove('active');
-        alert('Login efetuado com sucesso!');
-    });
+    if (isRegisterMode) {
+        title.textContent = 'Criar uma Conta';
+        submitBtn.textContent = 'Cadastrar';
+        toggleText.textContent = 'Já possui conta?';
+        toggleBtn.textContent = 'Entrar';
+    } else {
+        title.textContent = 'Acessar Conta';
+        submitBtn.textContent = 'Entrar';
+        toggleText.textContent = 'Não tem uma conta?';
+        toggleBtn.textContent = 'Cadastrar-se';
+    }
+}
 
-    registerForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('regName').value;
-        document.getElementById('userNameDisplay').innerText = `Olá, ${name.split(' ')[0]}`;
-        document.getElementById('userSubDisplay').innerText = "Minha Conta";
-        overlay.classList.remove('active');
-        alert('Conta criada com sucesso!');
-    });
+function handleAuth(event) {
+    event.preventDefault();
+    const email = document.getElementById('authEmail').value;
+    
+    userLoggedIn = email.split('@')[0];
+    document.getElementById('userName').textContent = `Olá, ${userLoggedIn}`;
+    document.getElementById('userSub').textContent = 'Minha Conta';
+    
+    closeAuthModal();
+    alert(isRegisterMode ? "Conta criada e logada com sucesso!" : "Login realizado com sucesso!");
 }
