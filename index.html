@@ -33,13 +33,18 @@
             </div>
 
             <div class="header-actions">
-                <label for="login-toggle" class="header-action">
-                    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    <span>
-                        <b>Minha conta</b>
-                        <small>Entrar / Cadastrar</small>
-                    </span>
-                </label>
+               <label for="auth-toggle" class="header-action" style="cursor: pointer;" title="Minha Conta">
+    <div class="header-icon-wrap">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+    </div>
+    <span>
+        <b>Minha conta</b>
+        <small>Entrar / Cadastrar</small>
+    </span>
+</label>
 
                 <label for="favorites-toggle" class="header-action">
                     <div class="header-icon-wrap">
@@ -372,5 +377,35 @@
 
     <!-- CHAMADA DO SCRIPT DE ADICIONAR/REMOVER PRODUTOS -->
     <script src="script.js"></script>
+
+<!-- PAINEL LATERAL DE CADASTRO -->
+<input type="checkbox" id="auth-toggle" class="drawer-toggle">
+<div class="cart-drawer-overlay">
+    <label for="auth-toggle" class="drawer-overlay-bg"></label>
+    <div class="cart-drawer" style="max-width: 400px; padding: 25px;">
+        <div class="cart-header">
+            <h2>Criar Conta</h2>
+            <label for="auth-toggle" class="cart-close" style="cursor: pointer;">&times;</label>
+        </div>
+        
+        <form id="register-form" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: 500;">Nome Completo</label>
+                <input type="text" id="reg-name" required placeholder="Digite seu nome" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: 500;">E-mail</label>
+                <input type="email" id="reg-email" required placeholder="seu@email.com" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: 500;">Senha</label>
+                <input type="password" id="reg-password" required placeholder="Mínimo 6 caracteres" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+            </div>
+            <button type="submit" class="btn-primary" style="margin-top: 10px; padding: 12px; border: none; cursor: pointer; border-radius: 6px; font-weight: bold;">Cadastrar</button>
+        </form>
+        
+        <p id="auth-message" style="margin-top: 15px; text-align: center; color: #28a745; font-weight: bold; display: none;"></p>
+    </div>
+</div>
 </body>
 </html>
