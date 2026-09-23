@@ -1063,23 +1063,19 @@ a {
 /* IMAGE */
 
 .product-image {
-
-    height: 120px;
-
+height: 160px;          
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
-    padding: 25px;
-
-    background:
-        radial-gradient(
-            circle,
-            #102a40 0,
-            #061522 60%
-        );
+    padding: 10px;          
+    background: radial-gradient(
+        circle,
+        #102a40 0,
+        #061522 60%
+    );
+    overflow: hidden;
+    
+      
 }
 
 .product-image img {
