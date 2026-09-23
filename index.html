@@ -807,7 +807,29 @@
     ======================================================= -->
 
     <script src="./script.js"></script>
-
+<!-- Modal de Detalhes do Produto -->
+<div id="product-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-body">
+            <div class="modal-images">
+                <img id="modal-main-image" src="" alt="Produto">
+                <div id="modal-thumbnails" class="thumbnails-container"></div>
+            </div>
+            <div class="modal-details">
+                <h2 id="modal-title"></h2>
+                <p id="modal-category" class="modal-category-text"></p>
+                <div class="modal-prices">
+                    <span id="modal-old-price" class="old-price"></span>
+                    <span id="modal-price" class="current-price"></span>
+                </div>
+                <p id="modal-description" class="description-text"></p>
+                <ul id="modal-specs" class="specs-list"></ul>
+                <button id="modal-add-cart" class="btn-primary">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
