@@ -1235,7 +1235,7 @@ function renderProducts() {
             <div class="product-image">
 
                 <img
-                    src="${productImage(product)}"
+                  src="${product.image || 'caminho/para/imagem-padrao.jpg'}"
                     alt="${product.name}">
 
             </div>
