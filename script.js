@@ -126,7 +126,7 @@ const products = [
     price: 1999.90,
     oldPrice: 2299.90,
     offer: true,
-    image: "https://images.unsplash.com/photo-1662221222462-5ba29f257d0a?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://galax.com/wp-content/uploads/2025/02/3060_GX_BOX_P_oc_600.png",
     },
 
        {
